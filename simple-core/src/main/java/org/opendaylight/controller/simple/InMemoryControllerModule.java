@@ -7,6 +7,11 @@
  */
 package org.opendaylight.controller.simple;
 
+import com.google.inject.Provides;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import io.netty.channel.EventLoopGroup;
+import io.netty.util.Timer;
+import io.netty.util.concurrent.EventExecutor;
 import javax.inject.Singleton;
 
 import org.opendaylight.controller.config.yang.netty.eventexecutor.AutoCloseableEventExecutor;
@@ -39,12 +44,6 @@ import org.opendaylight.mdsal.dom.broker.DOMRpcRouter;
 import org.opendaylight.mdsal.simple.MdsalModule;
 import org.opendaylight.mdsal.simple.PingPong;
 
-import com.google.inject.Provides;
-
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import io.netty.channel.EventLoopGroup;
-import io.netty.util.Timer;
-import io.netty.util.concurrent.EventExecutor;
 
 @SuppressFBWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
 public class InMemoryControllerModule extends AbstractCloseableModule {
@@ -116,39 +115,39 @@ public class InMemoryControllerModule extends AbstractCloseableModule {
     }
 
     // NETCONF
-	// FIXME Add configuration for thread-count
-	@Provides
-	@Singleton
-	@GlobalBossGroup
-	EventLoopGroup getGlobalBossGroup() {
-		return NioEventLoopGroupCloseable.newInstance(0);
-	}
+    // FIXME Add configuration for thread-count
+    @Provides
+    @Singleton
+    @GlobalBossGroup
+    EventLoopGroup getGlobalBossGroup() {
+        return NioEventLoopGroupCloseable.newInstance(0);
+    }
 
     // NETCONF
-	// FIXME Add configuration for thread-count
-	@Provides
-	@Singleton
-	@GlobalWorkerGroup
-	EventLoopGroup getGlobalWorkerGroup() {
-		return NioEventLoopGroupCloseable.newInstance(0);
-	}
+    // FIXME Add configuration for thread-count
+    @Provides
+    @Singleton
+    @GlobalWorkerGroup
+    EventLoopGroup getGlobalWorkerGroup() {
+        return NioEventLoopGroupCloseable.newInstance(0);
+    }
 
     // NETCONF
-	// FIXME Add configuration for thread-count
-	@Provides
-	@Singleton
-	@GlobalTimer
-	Timer getGlobalTimer() {
-		return HashedWheelTimerCloseable.newInstance(0L, 0);
-	}
+    // FIXME Add configuration for thread-count
+    @Provides
+    @Singleton
+    @GlobalTimer
+    Timer getGlobalTimer() {
+        return HashedWheelTimerCloseable.newInstance(0L, 0);
+    }
 
     // NETCONF
-	@Provides
-	@Singleton
-	@GlobalEventExecutor
-	EventExecutor getGlobalEventExecutor() {
-		return AutoCloseableEventExecutor.globalEventExecutor();
-	}
+    @Provides
+    @Singleton
+    @GlobalEventExecutor
+    EventExecutor getGlobalEventExecutor() {
+        return AutoCloseableEventExecutor.globalEventExecutor();
+    }
 
     @Override
     public void close() throws Exception {

@@ -7,6 +7,8 @@
  */
 package org.opendaylight.aaa.simple;
 
+import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
 import javax.annotation.Nullable;
 import javax.inject.Singleton;
 
@@ -17,8 +19,6 @@ import org.opendaylight.aaa.api.PasswordCredentials;
 import org.opendaylight.aaa.shiro.tokenauthrealm.auth.ClaimBuilder;
 import org.opendaylight.aaa.shiro.tokenauthrealm.auth.PasswordCredentialBuilder;
 
-import com.google.inject.AbstractModule;
-import com.google.inject.Provides;
 
 public class AAAModule extends AbstractModule {
 
@@ -29,21 +29,25 @@ public class AAAModule extends AbstractModule {
     }
 
     @Provides
-	@Singleton
-	CredentialAuth<PasswordCredentials> getPasswordCredentialAuth() {
-    	PasswordCredentials passwordCredentials = new PasswordCredentialBuilder().setUserName("admin").setPassword("admin").setDomain("").build();
-    	return new CredentialAuth<PasswordCredentials>() {
+    @Singleton
+    CredentialAuth<PasswordCredentials> getPasswordCredentialAuth() {
+        PasswordCredentials passwordCredentials = new PasswordCredentialBuilder()
+            .setUserName("admin")
+            .setPassword("admin")
+            .setDomain("")
+            .build();
+        return new CredentialAuth<PasswordCredentials>() {
 
-			@Nullable
-			@Override
-			public Claim authenticate(PasswordCredentials cred) throws AuthenticationException {
-				if (cred.equals(passwordCredentials)) {
-					return new ClaimBuilder()
-							.setUser("admin")
-							.build();
-				}
-				return null;
-			}
-		};
-	}
+            @Nullable
+            @Override
+            public Claim authenticate(PasswordCredentials cred) throws AuthenticationException {
+                if (cred.equals(passwordCredentials)) {
+                    return new ClaimBuilder()
+                            .setUser("admin")
+                            .build();
+                }
+                return null;
+            }
+        };
+    }
 }

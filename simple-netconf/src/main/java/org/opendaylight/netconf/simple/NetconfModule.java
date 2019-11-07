@@ -1,15 +1,18 @@
 /*
- * (C) 2019 Lumina Networks, Inc.
- * 2077 Gateway Place, Suite 500, San Jose, CA 95110.
- * All rights reserved.
+ * Copyright (c) 2019 Lumina Networks, Inc. and others. All rights reserved.
  *
- * Use of the software files and documentation is subject to license terms.
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 package org.opendaylight.netconf.simple;
 
+import com.google.inject.Provides;
+import io.netty.channel.EventLoopGroup;
+import io.netty.util.Timer;
+import io.netty.util.concurrent.EventExecutor;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
-
 import javax.inject.Singleton;
 
 import org.opendaylight.aaa.api.CredentialAuth;
@@ -63,11 +66,6 @@ import org.opendaylight.serviceutils.simple.ServiceUtilsModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.inject.Provides;
-
-import io.netty.channel.EventLoopGroup;
-import io.netty.util.Timer;
-import io.netty.util.concurrent.EventExecutor;
 
 /**
  * Guice module for NetConf.
@@ -108,204 +106,211 @@ public class NetconfModule extends AutoWiringModule {
         install(new RestConfModule());
     }
 
-	// Converted here from netconf-config/src/main/resources/OSGI-INF/blueprint/netconf-config.xml
-	// START
-	@Provides
-	@Singleton
-	NamingThreadPoolFactory getNamingThreadPoolFactory() {
-		return new NamingThreadPoolFactory(NAME_PREFIX);
-	}
-	
-	@Provides
-	@Singleton
-	@GlobalNetconfProcessingExecutor
-	ThreadPool getFlexibleThreadPool(NamingThreadPoolFactory namingThreadPoolFactory) {
-		return new FlexibleThreadPoolWrapper(MIN_THREAD_COUNT_FLEXIBLE_THREAD_POOL,
-				MAX_THREAD_COUNT_FLEXIBLE_THREAD_POOL,
-				KEEP_ALIVE_MILLIS_FLEXIBLE_THREAD_POOL,
-				TimeUnit.valueOf("MILLISECONDS"),
-				namingThreadPoolFactory);
-	}
-
-	@Provides
-	@Singleton
-	@GlobalNetconfSshScheduledExecutor
-	ScheduledThreadPool getScheduledThreadPool(NamingThreadPoolFactory namingThreadPoolFactory) {
-		return new ScheduledThreadPoolWrapper(MAX_THREAD_COUNT_SCHEDULED_THREAD_POOL, namingThreadPoolFactory);
-	}
-	
-	// Converted here from netconf-config/src/main/resources/OSGI-INF/blueprint/netconf-config.xml
-	// END
-
-	// Converted here from netconf-client/src/main/resources/OSGI-INF/blueprint/netconf-client.xml
-	// START
+    // Converted here from netconf-config/src/main/resources/OSGI-INF/blueprint/netconf-config.xml
+    // START
     @Provides
-    @Singleton 
+    @Singleton
+    NamingThreadPoolFactory getNamingThreadPoolFactory() {
+        return new NamingThreadPoolFactory(NAME_PREFIX);
+    }
+
+    @Provides
+    @Singleton
+    @GlobalNetconfProcessingExecutor
+    ThreadPool getFlexibleThreadPool(NamingThreadPoolFactory namingThreadPoolFactory) {
+        return new FlexibleThreadPoolWrapper(MIN_THREAD_COUNT_FLEXIBLE_THREAD_POOL,
+                MAX_THREAD_COUNT_FLEXIBLE_THREAD_POOL,
+                KEEP_ALIVE_MILLIS_FLEXIBLE_THREAD_POOL,
+                TimeUnit.valueOf("MILLISECONDS"),
+                namingThreadPoolFactory);
+    }
+
+    @Provides
+    @Singleton
+    @GlobalNetconfSshScheduledExecutor
+    ScheduledThreadPool getScheduledThreadPool(NamingThreadPoolFactory namingThreadPoolFactory) {
+        return new ScheduledThreadPoolWrapper(MAX_THREAD_COUNT_SCHEDULED_THREAD_POOL, namingThreadPoolFactory);
+    }
+
+    // Converted here from netconf-config/src/main/resources/OSGI-INF/blueprint/netconf-config.xml
+    // END
+
+    // Converted here from netconf-client/src/main/resources/OSGI-INF/blueprint/netconf-client.xml
+    // START
+    @Provides
+    @Singleton
     @org.opendaylight.netconf.simple.annotations.NetconfClientDispatcher
     NetconfClientDispatcher getNetconfClientDispatcher(
-    		@GlobalBossGroup EventLoopGroup globalBossGroup, 
-    		@GlobalWorkerGroup EventLoopGroup globalWorkerGroup, 
-    		@GlobalTimer Timer globalTimer) {
+            @GlobalBossGroup EventLoopGroup globalBossGroup,
+            @GlobalWorkerGroup EventLoopGroup globalWorkerGroup,
+            @GlobalTimer Timer globalTimer) {
         return new NetconfClientDispatcherImpl(globalBossGroup, globalWorkerGroup, globalTimer);
     }
-	// Converted here from netconf-client/src/main/resources/OSGI-INF/blueprint/netconf-client.xml
-	// END
+    // Converted here from netconf-client/src/main/resources/OSGI-INF/blueprint/netconf-client.xml
+    // END
 
-	// Converted here from mdsal-netconf-impl/src/main/resources/OSGI-INF/blueprint/mdsal-netconf-impl.xml
-	// START
+    // Converted here from mdsal-netconf-impl/src/main/resources/OSGI-INF/blueprint/mdsal-netconf-impl.xml
+    // START
     @Provides
     @Singleton
     @org.opendaylight.netconf.simple.annotations.MapperAggregatorRegistry
     NetconfOperationServiceFactoryListener getMapperAggregatorRegistry() {
-    	return new AggregatedNetconfOperationServiceFactory();
+        return new AggregatedNetconfOperationServiceFactory();
     }
 
     @Provides
     @Singleton
     @org.opendaylight.netconf.simple.annotations.AggregatedNetconfOperationServiceFactory
     NetconfOperationServiceFactory getAggregatedNetconfOperationServiceFactoryListener() {
-    	return new AggregatedNetconfOperationServiceFactory();
+        return new AggregatedNetconfOperationServiceFactory();
     }
 
     @Provides
     @Singleton
     @AggregatedNetconfOperationServiceFactoryMappers
     AggregatedNetconfOperationServiceFactory getAggregatedNetconfOperationServiceFactoryMappers(
-    		@org.opendaylight.netconf.simple.annotations.AggregatedNetconfOperationServiceFactory NetconfOperationServiceFactory aggregatedNetconfOperationServiceFactory) {
-		return new AggregatedNetconfOperationServiceFactory(Arrays.asList(aggregatedNetconfOperationServiceFactory));
-	}
+            @org.opendaylight.netconf.simple.annotations.AggregatedNetconfOperationServiceFactory
+                NetconfOperationServiceFactory aggregatedNetconfOperationServiceFactory) {
+        return new AggregatedNetconfOperationServiceFactory(Arrays.asList(aggregatedNetconfOperationServiceFactory));
+    }
 
     @Provides
     @Singleton
     NetconfMonitoringService getNetconfMonitoringService(
-    		@org.opendaylight.netconf.simple.annotations.AggregatedNetconfOperationServiceFactory NetconfOperationServiceFactory aggregatedNetconfOperationServiceFactory,
-    		@GlobalNetconfSshScheduledExecutor ScheduledThreadPool scheduledThreadPool) {
-    	return new NetconfMonitoringServiceImpl(aggregatedNetconfOperationServiceFactory, scheduledThreadPool, MONITORING_UPDATE_INTERVAL);
+            @org.opendaylight.netconf.simple.annotations.AggregatedNetconfOperationServiceFactory
+                NetconfOperationServiceFactory aggregatedNetconfOperationServiceFactory,
+            @GlobalNetconfSshScheduledExecutor ScheduledThreadPool scheduledThreadPool) {
+        return new NetconfMonitoringServiceImpl(
+            aggregatedNetconfOperationServiceFactory, scheduledThreadPool, MONITORING_UPDATE_INTERVAL);
     }
-    
+
     @Provides
     @Singleton
     NetconfServerSessionNegotiatorFactory getNetconfServerSessionNegotiatorFactory(
-    		@GlobalTimer Timer globalTimer,
-    		@AggregatedNetconfOperationServiceFactoryMappers AggregatedNetconfOperationServiceFactory aggregatedNetconfOperationServiceFactoryMappers,
-    		SessionIdProvider sessionIdProvider,
-    		NetconfMonitoringService netconfMonitoringService) {
-		return new NetconfServerSessionNegotiatorFactory(globalTimer,
-				aggregatedNetconfOperationServiceFactoryMappers,
-				sessionIdProvider,
-				CONNECTION_TIMEOUT_MILLIS,
-				netconfMonitoringService);
-	}
+            @GlobalTimer Timer globalTimer,
+            @AggregatedNetconfOperationServiceFactoryMappers
+                AggregatedNetconfOperationServiceFactory aggregatedNetconfOperationServiceFactoryMappers,
+            SessionIdProvider sessionIdProvider,
+            NetconfMonitoringService netconfMonitoringService) {
+        return new NetconfServerSessionNegotiatorFactory(globalTimer,
+                aggregatedNetconfOperationServiceFactoryMappers,
+                sessionIdProvider,
+                CONNECTION_TIMEOUT_MILLIS,
+                netconfMonitoringService);
+    }
 
     @Provides
-    @Singleton 
+    @Singleton
     ServerChannelInitializer getServerChannelInitializer(
-    		NetconfServerSessionNegotiatorFactory netconfServerSessionNegotiatorFactory) {
-    	return new ServerChannelInitializer(netconfServerSessionNegotiatorFactory);
+            NetconfServerSessionNegotiatorFactory netconfServerSessionNegotiatorFactory) {
+        return new ServerChannelInitializer(netconfServerSessionNegotiatorFactory);
     }
-    
+
     @Provides
-    @Singleton 
+    @Singleton
     NetconfServerDispatcher getNetconfServerDispatcher(
-    		ServerChannelInitializer serverChannelInitializer,
-    		@GlobalBossGroup EventLoopGroup globalBossGroup, 
-    		@GlobalWorkerGroup EventLoopGroup globalWorkerGroup) {
+            ServerChannelInitializer serverChannelInitializer,
+            @GlobalBossGroup EventLoopGroup globalBossGroup,
+            @GlobalWorkerGroup EventLoopGroup globalWorkerGroup) {
         return new NetconfServerDispatcherImpl(serverChannelInitializer, globalBossGroup, globalWorkerGroup);
     }
-	// Converted here from mdsal-netconf-impl/src/main/resources/OSGI-INF/blueprint/mdsal-netconf-impl.xml
-	// END
+    // Converted here from mdsal-netconf-impl/src/main/resources/OSGI-INF/blueprint/mdsal-netconf-impl.xml
+    // END
 
     // Converted here from netconf-topology/src/main/resources/OSGI-INF/blueprint/netconf-topology.xml
-	// START
+    // START
     @Provides
-    @Singleton 
+    @Singleton
     SchemaRepositoryProviderImpl getSchemaRepositoryProviderImpl(
-    		ServerChannelInitializer serverChannelInitializer,
-    		@GlobalBossGroup EventLoopGroup globalBossGroup, 
-    		@GlobalWorkerGroup EventLoopGroup globalWorkerGroup) {
+            ServerChannelInitializer serverChannelInitializer,
+            @GlobalBossGroup EventLoopGroup globalBossGroup,
+            @GlobalWorkerGroup EventLoopGroup globalWorkerGroup) {
         return new SchemaRepositoryProviderImpl("shared-schema-repository-impl");
     }
 
-	@Provides
-	@Singleton
-	NetconfTopology getNetconfTopology(@org.opendaylight.netconf.simple.annotations.NetconfClientDispatcher NetconfClientDispatcher clientDispatcherDependency,
-			@GlobalNetconfSshScheduledExecutor ScheduledThreadPool keepAliveExecutor,
-			@GlobalNetconfProcessingExecutor ThreadPool processingExecutor,
-			SchemaRepositoryProviderImpl schemaRepositoryProvider,
-			@GlobalEventExecutor EventExecutor eventExecutor,
-			DataBroker dataBroker,
-			DOMMountPointService mountPointService,
-			AAAEncryptionService encryptionService) {
-		NetconfTopologyImpl impl= new NetconfTopologyImpl("topology-netconf",
-				clientDispatcherDependency,
-				eventExecutor,
-				keepAliveExecutor,
-				processingExecutor,
-				schemaRepositoryProvider,
-				dataBroker,
-				mountPointService,
-				encryptionService);
-		impl.init();
-		return impl;
-	}
+    @Provides
+    @Singleton
+    NetconfTopology getNetconfTopology(@org.opendaylight.netconf.simple.annotations.NetconfClientDispatcher
+            NetconfClientDispatcher clientDispatcherDependency,
+            @GlobalNetconfSshScheduledExecutor ScheduledThreadPool keepAliveExecutor,
+            @GlobalNetconfProcessingExecutor ThreadPool processingExecutor,
+            SchemaRepositoryProviderImpl schemaRepositoryProvider,
+            @GlobalEventExecutor EventExecutor eventExecutor,
+            DataBroker dataBroker,
+            DOMMountPointService mountPointService,
+            AAAEncryptionService encryptionService) {
+        NetconfTopologyImpl impl = new NetconfTopologyImpl("topology-netconf",
+                clientDispatcherDependency,
+                eventExecutor,
+                keepAliveExecutor,
+                processingExecutor,
+                schemaRepositoryProvider,
+                dataBroker,
+                mountPointService,
+                encryptionService);
+        impl.init();
+        return impl;
+    }
 //
-//	@Provides
-//	@Singleton
-//	NetconfTopologySingletonService getNetconfTopologyManager(DataBroker dataBroker,
-//			DOMRpcProviderService rpcRegistry,
-//			ClusterSingletonServiceProvider clusterSingletonService,
-//			@GlobalNetconfSshScheduledExecutor ScheduledThreadPool keepAliveExecutor,
-//			@GlobalNetconfProcessingExecutor ThreadPool processingExecutor,
-//			ActorSystemProvider actorSystemProvider,
-//			@GlobalEventExecutor EventExecutor eventExecutor,
-//			@org.opendaylight.netconf.simple.NetconfClientDispatcher NetconfClientDispatcher clientDispatcherDependency,
-//			DOMMountPointService mountPointService,
-//			AAAEncryptionService encryptionService) {
-//		Config config = new ConfigBuilder().setWriteTransactionIdleTimeout(WRITE_TRANSACTION_IDLE_TIMEOUT_MILLIS)
-//				.build();
-//		return new NetconfTopologyManager(dataBroker,
-//				rpcRegistry,
-//				clusterSingletonService,
-//				keepAliveExecutor,
-//				processingExecutor,
-//				actorSystemProvider,
-//				eventExecutor,
-//				clientDispatcherDependency,
-//				"topology-netconf",
-//				config,
-//				mountPointService,
-//				encryptionService);
-//	}
+//  @Provides
+//  @Singleton
+//  NetconfTopologySingletonService getNetconfTopologyManager(DataBroker dataBroker,
+//          DOMRpcProviderService rpcRegistry,
+//          ClusterSingletonServiceProvider clusterSingletonService,
+//          @GlobalNetconfSshScheduledExecutor ScheduledThreadPool keepAliveExecutor,
+//          @GlobalNetconfProcessingExecutor ThreadPool processingExecutor,
+//          ActorSystemProvider actorSystemProvider,
+//          @GlobalEventExecutor EventExecutor eventExecutor,
+//          @org.opendaylight.netconf.simple.NetconfClientDispatcher NetconfClientDispatcher clientDispatcherDependency,
+//          DOMMountPointService mountPointService,
+//          AAAEncryptionService encryptionService) {
+//      Config config = new ConfigBuilder().setWriteTransactionIdleTimeout(WRITE_TRANSACTION_IDLE_TIMEOUT_MILLIS)
+//              .build();
+//      return new NetconfTopologyManager(dataBroker,
+//              rpcRegistry,
+//              clusterSingletonService,
+//              keepAliveExecutor,
+//              processingExecutor,
+//              actorSystemProvider,
+//              eventExecutor,
+//              clientDispatcherDependency,
+//              "topology-netconf",
+//              config,
+//              mountPointService,
+//              encryptionService);
+//  }
 
     // Converted here from netconf-topology/src/main/resources/OSGI-INF/blueprint/netconf-topology.xml
-	// END
-
-	// Converted here from mdsal-netconf-connector/src/main/resources/OSGI-INF/blueprint/mdsal-netconf-connector.xml
-	// START
-
-	@Provides
-	@Singleton
-	@MdsalNetconfConnector
-	NetconfOperationServiceFactory getMdsalNetconfOperationServiceFactory(DOMSchemaService schemaService,
-			@org.opendaylight.netconf.simple.annotations.MapperAggregatorRegistry NetconfOperationServiceFactoryListener mapperAggregatorRegistry,
-			DOMDataBroker domDataBroker,
-			DOMRpcService domRpcService) {
-		return new MdsalNetconfOperationServiceFactory(schemaService, mapperAggregatorRegistry, domDataBroker, domRpcService);
-	}
+    // END
 
     // Converted here from mdsal-netconf-connector/src/main/resources/OSGI-INF/blueprint/mdsal-netconf-connector.xml
-	// END
+    // START
+
+    @Provides
+    @Singleton
+    @MdsalNetconfConnector
+    NetconfOperationServiceFactory getMdsalNetconfOperationServiceFactory(DOMSchemaService schemaService,
+            @org.opendaylight.netconf.simple.annotations.MapperAggregatorRegistry
+                NetconfOperationServiceFactoryListener mapperAggregatorRegistry,
+            DOMDataBroker domDataBroker,
+            DOMRpcService domRpcService) {
+        return new MdsalNetconfOperationServiceFactory(
+            schemaService, mapperAggregatorRegistry, domDataBroker, domRpcService);
+    }
+
+    // Converted here from mdsal-netconf-connector/src/main/resources/OSGI-INF/blueprint/mdsal-netconf-connector.xml
+    // END
 
     // Converted here from netconf/aaa-authn-odl-plugin/src/main/resources/OSGI-INF/blueprint/aaa-authn-netconf.xml
-	// START
+    // START
 
-	@Provides
-	@Singleton
-	@NetconfAuthProvider
-	AuthProvider getNetconfAuthProvider(CredentialAuth<PasswordCredentials> credService) {
-		return new CredentialServiceAuthProvider(credService);
-	}
+    @Provides
+    @Singleton
+    @NetconfAuthProvider
+    AuthProvider getNetconfAuthProvider(CredentialAuth<PasswordCredentials> credService) {
+        return new CredentialServiceAuthProvider(credService);
+    }
     // Converted here from netconf/aaa-authn-odl-plugin/src/main/resources/OSGI-INF/blueprint/aaa-authn-netconf.xml
-	// END
+    // END
 
 }

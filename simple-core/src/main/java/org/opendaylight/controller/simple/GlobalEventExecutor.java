@@ -1,9 +1,9 @@
 /*
- * (C) 2019 Lumina Networks, Inc.
- * 2077 Gateway Place, Suite 500, San Jose, CA 95110.
- * All rights reserved.
+ * Copyright (c) 2019 Lumina Networks, Inc. and others. All rights reserved.
  *
- * Use of the software files and documentation is subject to license terms.
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 package org.opendaylight.controller.simple;
 
@@ -12,13 +12,12 @@ import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+import io.netty.util.concurrent.EventExecutor;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
-
 import javax.inject.Qualifier;
 
-import io.netty.util.concurrent.EventExecutor;
 
 /**
  * PingPong {@link EventExecutor} dependency injection annotation.
