@@ -1,0 +1,53 @@
+---
+project: 'odlmicro'
+project_creation_date: '2020-03-19'
+project_category: ''
+lifecycle_state: 'Incubation'
+project_lead: &odl_odlmicro_ptl
+    name: 'Tejas Nevrekar'
+    email: 'tejas.nevrekar@gmail.com'
+    company: 'Lumina Networks'
+    id: 'tnevrekar'
+    timezone: 'Asia/Kolkata'
+primary_contact: *odl_odlmicro_ptl
+issue_tracking:
+    type: 'jira'
+    url: 'https://jira.opendaylight.org/projects/'
+    key: 'odlmicro'
+mailing_list:
+    type: 'groups.io'
+    url: 'app-dev@lists.opendaylight.org'
+    tag: '[]'
+realtime_discussion:
+    type: 'irc'
+    server: 'freenode.net'
+    channel: '#opendaylight'
+meetings:
+    - type: 'gotomeeting+irc'
+      agenda: 'https://wiki.opendaylight.org'
+      url: ''
+      server: 'freenode.net'
+      channel: '#opendaylight'
+      repeats: ''
+      time: ''
+repositories:
+    - odlmicro
+committers:
+    - <<: *odl_odlmicro_ptl
+    - name: 'Jamo Luhrsen'
+      email: 'jluhrsen@gmail.com'
+      company: 'Lumina Networks'
+      id: 'jluhrsen'
+      timezone: 'America/Los_Angeles'
+    - name: 'Dhiman Ghosh'
+      email: 'dhiman.ghosh@ericsson.com'
+      company: 'Ericsson'
+      id: 'ezghodh'
+      timezone: 'Asia/Kolkata'
+tsc:
+    # yamllint disable rule:line-length
+    approval: 'https://wiki.lfnetworking.org/display/ODL/2020-03-19+TSC+Minutes'
+    changes:
+        - type: ''
+          name: ''
+          link: ''
