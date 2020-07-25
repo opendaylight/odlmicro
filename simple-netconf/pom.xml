@@ -11,20 +11,20 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>ch.vorburger.opendaylight.simple</groupId>
+    <groupId>org.opendaylight.simple</groupId>
     <artifactId>simple-aggregator</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
-  <groupId>ch.vorburger.opendaylight.simple</groupId>
+  <groupId>org.opendaylight.simple</groupId>
   <artifactId>simple-netconf</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
   <dependencies>
 
     <dependency>
-      <groupId>ch.vorburger.opendaylight.simple</groupId>
+      <groupId>org.opendaylight.simple</groupId>
       <artifactId>simple-core</artifactId>
       <version>${project.version}</version>
     </dependency>
