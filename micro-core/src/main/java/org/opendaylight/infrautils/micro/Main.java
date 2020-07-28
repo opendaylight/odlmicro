@@ -11,10 +11,10 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
 import com.google.inject.Stage;
-import com.mycila.guice.ext.closeable.CloseableInjector;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.IOException;
-import org.opendaylight.infrautils.inject.PostFullSystemInjectionListener;
+import org.opendaylight.odlguice.inject.PostFullSystemInjectionListener;
+import org.opendaylight.odlguice.inject.guice.extensions.closeable.CloseableInjector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

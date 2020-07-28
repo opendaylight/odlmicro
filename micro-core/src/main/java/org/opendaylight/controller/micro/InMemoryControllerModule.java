@@ -13,7 +13,6 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.util.Timer;
 import io.netty.util.concurrent.EventExecutor;
 import javax.inject.Singleton;
-
 import org.opendaylight.controller.config.yang.netty.eventexecutor.AutoCloseableEventExecutor;
 import org.opendaylight.controller.config.yang.netty.threadgroup.NioEventLoopGroupCloseable;
 import org.opendaylight.controller.config.yang.netty.timer.HashedWheelTimerCloseable;

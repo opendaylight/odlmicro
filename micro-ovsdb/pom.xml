@@ -78,8 +78,9 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.opendaylight.infrautils</groupId>
+      <groupId>org.opendaylight.odlguice</groupId>
       <artifactId>inject.guice.testutils</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
       <scope>compile</scope>
       <!-- TODO <scope>test</scope> instead of compile here once I'll create
            a new infrautils:inject.guice.testutils (non-testutils) for the run-time part.. -->
@@ -92,8 +93,9 @@
     </dependency>
     <!--  TODO remove when https://git.opendaylight.org/gerrit/#/c/67763/ is merged and odlparent bumped -->
     <dependency>
-      <groupId>com.mycila.guice.extensions</groupId>
-      <artifactId>mycila-guice-jsr250</artifactId>
+      <groupId>org.opendaylight.odlguice</groupId>
+      <artifactId>inject.guice.extensions.jsr250</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
 

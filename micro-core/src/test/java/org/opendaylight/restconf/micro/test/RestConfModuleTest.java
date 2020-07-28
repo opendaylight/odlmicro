@@ -17,10 +17,10 @@ import org.junit.Test;
 import org.opendaylight.aaa.web.WebServer;
 import org.opendaylight.aaa.web.testutils.TestWebClient;
 import org.opendaylight.controller.micro.InMemoryControllerModule;
-import org.opendaylight.infrautils.inject.guice.testutils.AnnotationsModule;
-import org.opendaylight.infrautils.inject.guice.testutils.GuiceRule;
 import org.opendaylight.infrautils.micro.testutils.AbstractSimpleDistributionTest;
 import org.opendaylight.infrautils.web.WebModule;
+import org.opendaylight.odlguice.inject.guice.testutils.AnnotationsModule;
+import org.opendaylight.odlguice.inject.guice.testutils.GuiceRule;
 import org.opendaylight.restconf.micro.RestConfModule;
 
 /**
