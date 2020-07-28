@@ -12,8 +12,8 @@ import static com.google.common.truth.Truth.assertThat;
 import javax.inject.Inject;
 import org.junit.Rule;
 import org.junit.Test;
-import org.opendaylight.infrautils.inject.guice.testutils.AnnotationsModule;
-import org.opendaylight.infrautils.inject.guice.testutils.GuiceRule;
+import org.opendaylight.odlguice.inject.guice.testutils.AnnotationsModule;
+import org.opendaylight.odlguice.inject.guice.testutils.GuiceRule;
 
 /**
  * Test illustrating how to use the GuiceRule with an inline lamda binding.
