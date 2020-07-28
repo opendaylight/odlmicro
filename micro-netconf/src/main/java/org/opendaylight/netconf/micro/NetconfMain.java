@@ -7,8 +7,8 @@
  */
 package org.opendaylight.netconf.micro;
 
-import org.opendaylight.infrautils.inject.guice.GuiceClassPathBinder;
 import org.opendaylight.infrautils.micro.Main;
+import org.opendaylight.odlguice.inject.guice.GuiceClassPathBinder;
 
 public final class NetconfMain {
 

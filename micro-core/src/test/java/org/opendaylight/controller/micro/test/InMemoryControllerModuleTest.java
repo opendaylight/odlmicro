@@ -14,10 +14,10 @@ import org.junit.Test;
 import org.opendaylight.controller.md.sal.binding.api.DataBroker;
 import org.opendaylight.controller.md.sal.binding.api.NotificationService;
 import org.opendaylight.controller.micro.InMemoryControllerModule;
-import org.opendaylight.infrautils.inject.guice.testutils.AnnotationsModule;
-import org.opendaylight.infrautils.inject.guice.testutils.GuiceRule;
 import org.opendaylight.infrautils.micro.testutils.AbstractSimpleDistributionTest;
 import org.opendaylight.mdsal.micro.PingPong;
+import org.opendaylight.odlguice.inject.guice.testutils.AnnotationsModule;
+import org.opendaylight.odlguice.inject.guice.testutils.GuiceRule;
 
 public class InMemoryControllerModuleTest extends AbstractSimpleDistributionTest {
 

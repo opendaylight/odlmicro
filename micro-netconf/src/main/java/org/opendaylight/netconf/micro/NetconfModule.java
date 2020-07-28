@@ -14,7 +14,6 @@ import io.netty.util.concurrent.EventExecutor;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import javax.inject.Singleton;
-
 import org.opendaylight.aaa.api.CredentialAuth;
 import org.opendaylight.aaa.api.PasswordCredentials;
 import org.opendaylight.aaa.encrypt.AAAEncryptionService;
@@ -29,9 +28,6 @@ import org.opendaylight.controller.micro.GlobalEventExecutor;
 import org.opendaylight.controller.micro.GlobalTimer;
 import org.opendaylight.controller.micro.GlobalWorkerGroup;
 import org.opendaylight.controller.micro.InMemoryControllerModule;
-import org.opendaylight.infrautils.inject.guice.AutoWiringModule;
-import org.opendaylight.infrautils.inject.guice.GuiceClassPathBinder;
-import org.opendaylight.infrautils.inject.guice.testutils.AnnotationsModule;
 import org.opendaylight.infrautils.micro.InfraUtilsModule;
 import org.opendaylight.mdsal.binding.api.DataBroker;
 import org.opendaylight.mdsal.dom.api.DOMDataBroker;
@@ -40,7 +36,6 @@ import org.opendaylight.mdsal.dom.api.DOMRpcService;
 import org.opendaylight.mdsal.dom.api.DOMSchemaService;
 import org.opendaylight.netconf.api.NetconfServerDispatcher;
 import org.opendaylight.netconf.api.monitoring.NetconfMonitoringService;
-import org.opendaylight.netconf.auth.AuthProvider;
 import org.opendaylight.netconf.authprovider.CredentialServiceAuthProvider;
 import org.opendaylight.netconf.client.NetconfClientDispatcher;
 import org.opendaylight.netconf.client.NetconfClientDispatcherImpl;
@@ -61,6 +56,9 @@ import org.opendaylight.netconf.micro.annotations.NetconfAuthProvider;
 import org.opendaylight.netconf.topology.api.NetconfTopology;
 import org.opendaylight.netconf.topology.impl.NetconfTopologyImpl;
 import org.opendaylight.netconf.topology.impl.SchemaRepositoryProviderImpl;
+import org.opendaylight.odlguice.inject.guice.AutoWiringModule;
+import org.opendaylight.odlguice.inject.guice.GuiceClassPathBinder;
+import org.opendaylight.odlguice.inject.guice.testutils.AnnotationsModule;
 import org.opendaylight.restconf.micro.RestConfModule;
 import org.opendaylight.serviceutils.micro.ServiceUtilsModule;
 import org.slf4j.Logger;
@@ -307,7 +305,7 @@ public class NetconfModule extends AutoWiringModule {
     @Provides
     @Singleton
     @NetconfAuthProvider
-    AuthProvider getNetconfAuthProvider(CredentialAuth<PasswordCredentials> credService) {
+    CredentialServiceAuthProvider getNetconfAuthProvider(CredentialAuth<PasswordCredentials> credService) {
         return new CredentialServiceAuthProvider(credService);
     }
     // Converted here from netconf/aaa-authn-odl-plugin/src/main/resources/OSGI-INF/blueprint/aaa-authn-netconf.xml

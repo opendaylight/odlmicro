@@ -12,9 +12,9 @@ import org.junit.Rule;
 import org.opendaylight.aaa.encrypt.AAAEncryptionService;
 import org.opendaylight.aaa.micro.EncryptModule;
 import org.opendaylight.controller.micro.InMemoryControllerModule;
-import org.opendaylight.infrautils.inject.guice.testutils.AnnotationsModule;
-import org.opendaylight.infrautils.inject.guice.testutils.GuiceRule;
 import org.opendaylight.infrautils.micro.testutils.AbstractSimpleDistributionTest;
+import org.opendaylight.odlguice.inject.guice.testutils.AnnotationsModule;
+import org.opendaylight.odlguice.inject.guice.testutils.GuiceRule;
 
 public class EncryptModuleTest extends AbstractSimpleDistributionTest {
 

@@ -7,8 +7,8 @@
  */
 package org.opendaylight.ovsdb.micro;
 
-import org.opendaylight.infrautils.inject.guice.AutoWiringModule;
-import org.opendaylight.infrautils.inject.guice.GuiceClassPathBinder;
+import org.opendaylight.odlguice.inject.guice.AutoWiringModule;
+import org.opendaylight.odlguice.inject.guice.GuiceClassPathBinder;
 
 public class OvsdbModule extends AutoWiringModule {
 
