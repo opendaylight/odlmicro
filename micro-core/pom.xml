@@ -293,13 +293,13 @@
 
     <!--infrautils-->
     <dependency>
-      <groupId>org.opendaylight.infrautils</groupId>
+      <groupId>org.opendaylight.odlguice</groupId>
       <artifactId>inject.guice</artifactId>
     </dependency>
 
     <!--infrautils-->
     <dependency>
-      <groupId>org.opendaylight.infrautils</groupId>
+      <groupId>org.opendaylight.odlguice</groupId>
       <artifactId>inject.guice.testutils</artifactId>
     </dependency>
 
@@ -340,8 +340,8 @@
     </dependency>
     <!--  TODO remove when https://git.opendaylight.org/gerrit/#/c/67763/ is merged and odlparent bumped -->
     <dependency>
-      <groupId>com.mycila.guice.extensions</groupId>
-      <artifactId>mycila-guice-jsr250</artifactId>
+      <groupId>org.opendaylight.odlguice</groupId>
+      <artifactId>inject.guice.extensions.jsr250</artifactId>
       <scope>compile</scope>
     </dependency>
 

@@ -9,11 +9,11 @@ package org.opendaylight.infrautils.micro.testutils;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import com.mycila.guice.ext.closeable.CloseableInjector;
 import javax.inject.Inject;
 import org.junit.Rule;
 import org.junit.Test;
 import org.opendaylight.infrautils.testutils.LogRule;
+import org.opendaylight.odlguice.inject.guice.extensions.closeable.CloseableInjector;
 
 /**
  * Abstract base class for micro distribution component tests.

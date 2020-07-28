@@ -12,8 +12,8 @@ import static com.google.common.truth.Truth.assertThat;
 import org.junit.Test;
 import org.junit.runners.model.Statement;
 import org.opendaylight.infrautils.inject.guice.AbstractCloseableModule;
-import org.opendaylight.infrautils.inject.guice.testutils.AnnotationsModule;
-import org.opendaylight.infrautils.inject.guice.testutils.GuiceRule;
+import org.opendaylight.odlguice.inject.guice.testutils.AnnotationsModule;
+import org.opendaylight.odlguice.inject.guice.testutils.GuiceRule;
 
 /**
  * Test PreDestroy in Module.

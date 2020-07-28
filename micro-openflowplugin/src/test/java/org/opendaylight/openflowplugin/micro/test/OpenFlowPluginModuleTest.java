@@ -20,12 +20,12 @@ import org.opendaylight.aaa.web.testutils.WebTestModule;
 import org.opendaylight.controller.micro.InMemoryControllerModule;
 import org.opendaylight.infrautils.diagstatus.DiagStatusService;
 import org.opendaylight.infrautils.diagstatus.ServiceStatusSummary;
-import org.opendaylight.infrautils.inject.guice.GuiceClassPathBinder;
-import org.opendaylight.infrautils.inject.guice.testutils.AnnotationsModule;
-import org.opendaylight.infrautils.inject.guice.testutils.GuiceRule;
+import org.opendaylight.infrautils.inject.guice.ready.GuiceReadyModule;
 import org.opendaylight.infrautils.micro.DiagStatusModule;
 import org.opendaylight.infrautils.micro.testutils.AbstractSimpleDistributionTest;
-import org.opendaylight.infrautils.ready.guice.ReadyModule;
+import org.opendaylight.odlguice.inject.guice.GuiceClassPathBinder;
+import org.opendaylight.odlguice.inject.guice.testutils.AnnotationsModule;
+import org.opendaylight.odlguice.inject.guice.testutils.GuiceRule;
 import org.opendaylight.openflowplugin.api.openflow.OpenFlowPluginProvider;
 import org.opendaylight.openflowplugin.impl.OpenFlowPluginProviderImpl;
 import org.opendaylight.openflowplugin.micro.OpenFlowPluginModule;
@@ -40,7 +40,7 @@ public class OpenFlowPluginModuleTest extends AbstractSimpleDistributionTest {
 
     public @Rule GuiceRule guice = new GuiceRule(new OpenFlowPluginModule(CLASS_PATH_BINDER),
             new ServiceUtilsModule(), new InMemoryControllerModule(), new DiagStatusModule(), new WebTestModule(),
-            new ReadyModule(), new AnnotationsModule());
+            new GuiceReadyModule(), new AnnotationsModule());
 
     @Inject PacketProcessingService packetProcessingService; // OPNFLWPLUG-1059
     @Inject OpenFlowPluginProvider ofpProvider;
@@ -55,7 +55,8 @@ public class OpenFlowPluginModuleTest extends AbstractSimpleDistributionTest {
         assertThat(frmConfig.getReconciliationRetryCount()).named("reconciliationRetryCount").isEqualTo(5);
     }
 
-    @Test public void testDiagStatus() throws InterruptedException, ExecutionException, TimeoutException {
+    @Test
+    public void testDiagStatus() throws InterruptedException, ExecutionException, TimeoutException {
         openFlowPluginProviderImpl.getFullyStarted().get(60, TimeUnit.SECONDS);
         ServiceStatusSummary status = diagStatus.getServiceStatusSummary();
         if (!status.isOperational()) {

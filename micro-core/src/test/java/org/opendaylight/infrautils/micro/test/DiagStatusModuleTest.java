@@ -11,11 +11,11 @@ import javax.inject.Inject;
 import org.junit.Rule;
 import org.junit.Test;
 import org.opendaylight.infrautils.diagstatus.DiagStatusService;
-import org.opendaylight.infrautils.inject.guice.testutils.AnnotationsModule;
-import org.opendaylight.infrautils.inject.guice.testutils.GuiceRule;
 import org.opendaylight.infrautils.micro.DiagStatusModule;
 import org.opendaylight.infrautils.ready.guice.ReadyModule;
 import org.opendaylight.infrautils.web.WebModule;
+import org.opendaylight.odlguice.inject.guice.testutils.AnnotationsModule;
+import org.opendaylight.odlguice.inject.guice.testutils.GuiceRule;
 
 /**
  * Unit test for {@link DiagStatusModule}.
