@@ -83,13 +83,13 @@
 
     <!--infrautils-->
     <dependency>
-      <groupId>org.opendaylight.infrautils</groupId>
+      <groupId>org.opendaylight.odlguice</groupId>
       <artifactId>inject.guice</artifactId>
     </dependency>
 
     <!--infrautils-->
     <dependency>
-      <groupId>org.opendaylight.infrautils</groupId>
+      <groupId>org.opendaylight.odlguice</groupId>
       <artifactId>inject.guice.testutils</artifactId>
       <scope>compile</scope>
     </dependency>

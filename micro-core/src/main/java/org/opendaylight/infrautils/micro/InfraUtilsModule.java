@@ -8,14 +8,14 @@
 package org.opendaylight.infrautils.micro;
 
 import com.google.inject.AbstractModule;
-import org.opendaylight.infrautils.ready.guice.ReadyModule;
+import org.opendaylight.infrautils.micro.inject.guice.ready.GuiceReadyModule;
 import org.opendaylight.infrautils.web.WebModule;
 
 public class InfraUtilsModule extends AbstractModule {
     @Override
     protected void configure() {
         install(new WebModule());
-        install(new ReadyModule());
+        install(new GuiceReadyModule());
         install(new DiagStatusModule());
         install(new MetricsModule());
         install(new CachesModule());

@@ -7,8 +7,8 @@
  */
 package org.opendaylight.openflowplugin.micro;
 
-import org.opendaylight.infrautils.inject.guice.GuiceClassPathBinder;
 import org.opendaylight.infrautils.micro.ShellMain;
+import org.opendaylight.odlguice.inject.guice.GuiceClassPathBinder;
 
 public final class OpenflowPluginMain {
 
