@@ -11,9 +11,9 @@ import org.junit.Ignore;
 import org.junit.Rule;
 import org.opendaylight.aaa.micro.AAAModule;
 import org.opendaylight.controller.micro.InMemoryControllerModule;
-import org.opendaylight.infrautils.inject.guice.testutils.AnnotationsModule;
-import org.opendaylight.infrautils.inject.guice.testutils.GuiceRule;
 import org.opendaylight.infrautils.micro.testutils.AbstractSimpleDistributionTest;
+import org.opendaylight.odlguice.inject.guice.testutils.AnnotationsModule;
+import org.opendaylight.odlguice.inject.guice.testutils.GuiceRule;
 
 @Ignore // TODO fix NullPointerException at org.opendaylight.aaa.cert.impl.DefaultMdsalSslData.createKeyStores :155
 public class AAAModuleTest extends AbstractSimpleDistributionTest {
