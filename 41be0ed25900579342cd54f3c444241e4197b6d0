@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13c7ed72_bf50c402",
+        "filename": "micro-core/src/main/java/org/opendaylight/infrautils/inject/guice/ready/GuiceReadyModule.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 8351
+      },
+      "writtenOn": "2020-07-29T14:51:02Z",
+      "side": 1,
+      "message": "Pls change the Copyright here. Look at the NETCONF code",
+      "revId": "41be0ed25900579342cd54f3c444241e4197b6d0",
+      "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3b19e98_cfc48859",
+        "filename": "micro-core/src/main/java/org/opendaylight/infrautils/inject/guice/ready/GuiceReadyModule.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 8351
+      },
+      "writtenOn": "2020-07-29T14:51:02Z",
+      "side": 1,
+      "message": "Pls change this package to org.opendaylight.infrautils.micro.inject.guice.ready",
+      "revId": "41be0ed25900579342cd54f3c444241e4197b6d0",
+      "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
+      "unresolved": true
+    }
+  ]
+}
