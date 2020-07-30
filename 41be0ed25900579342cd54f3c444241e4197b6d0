@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "49222b99_30ac8c1b",
+        "filename": "micro-core/src/main/java/org/opendaylight/infrautils/inject/guice/ready/GuiceReadyModule.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 8523
+      },
+      "writtenOn": "2020-07-30T08:08:27Z",
+      "side": 1,
+      "message": "This file is copied from infrautils. So I feel it should carry the same copyright.",
+      "parentUuid": "13c7ed72_bf50c402",
+      "revId": "41be0ed25900579342cd54f3c444241e4197b6d0",
+      "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3b19e98_cfc48859",
         "filename": "micro-core/src/main/java/org/opendaylight/infrautils/inject/guice/ready/GuiceReadyModule.java",
         "patchSetId": 5
