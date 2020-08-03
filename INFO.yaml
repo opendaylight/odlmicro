@@ -44,10 +44,20 @@ committers:
       company: 'Ericsson'
       id: 'ezghodh'
       timezone: 'Asia/Kolkata'
+    - name: 'Ravi Sankar'
+      email: 'rsankar@luminanetworks.com'
+      company: 'Lumina Networks'
+      id: 'VenkataSatya'
+      timezone: 'Asia/Kolkata'
+    - name: 'Nikhil Soni'
+      email: 'nsoni@luminanetworks.com'
+      company: 'Lumina Networks'
+      id: 'nikhil.soni.lumina'
+      timezone: 'Asia/Kolkata'
 tsc:
     # yamllint disable rule:line-length
     approval: 'https://wiki.lfnetworking.org/display/ODL/2020-03-19+TSC+Minutes'
     changes:
-        - type: ''
-          name: ''
-          link: ''
+        - type: 'Approval'
+          name: 'TSC Vote'
+          link: 'https://wiki.opendaylight.org/display/ODL/ODL-Micro+Committer+Approval'
