@@ -9,10 +9,9 @@ package org.opendaylight.openflowplugin.micro;
 
 import com.google.inject.Provides;
 import javax.inject.Singleton;
-import org.opendaylight.controller.md.sal.binding.api.DataBroker;
 import org.opendaylight.controller.micro.ConfigReader;
+import org.opendaylight.mdsal.binding.api.DataBroker;
 import org.opendaylight.mdsal.binding.api.RpcConsumerRegistry;
-import org.opendaylight.mdsal.micro.PingPong;
 import org.opendaylight.odlguice.inject.guice.AutoWiringModule;
 import org.opendaylight.odlguice.inject.guice.GuiceClassPathBinder;
 import org.opendaylight.openflowjava.protocol.impl.core.SwitchConnectionProviderFactoryImpl;
@@ -45,8 +44,8 @@ public class OpenFlowPluginModule extends AutoWiringModule {
     }
 
     @Provides
-    @Singleton PingPongDataBroker getPingPongDataBroker(@PingPong DataBroker pingPongDataBroker) {
-        return new ForwardingPingPongDataBroker(pingPongDataBroker);
+    @Singleton PingPongDataBroker getPingPongDataBroker(DataBroker dataBroker) {
+        return new ForwardingPingPongDataBroker(dataBroker);
     }
 
     @Provides

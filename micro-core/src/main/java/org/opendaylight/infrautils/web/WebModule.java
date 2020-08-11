@@ -31,7 +31,8 @@ public class WebModule extends AbstractModule {
         // JAX-RS
         bind(ServletSupport.class).to(JerseyServletSupport.class);
 
+
         // TODO replace this NOOP WebContextSecurer with one with a fixed uid/pwd for HTTP BASIC (and ditch AAA)
-        bind(WebContextSecurer.class).toInstance((webContextBuilder, urlPatterns) -> { });
+        bind(WebContextSecurer.class).toInstance((webContextBuilder, asyncSupported, urlPatterns) -> { });
     }
 }

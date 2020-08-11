@@ -12,7 +12,8 @@ import org.opendaylight.odlguice.inject.guice.GuiceClassPathBinder;
 
 public final class OpenflowPluginMain {
 
-    private OpenflowPluginMain() { }
+    private OpenflowPluginMain() {
+    }
 
     public static void main(String[] args) {
         GuiceClassPathBinder classPathBinder = new GuiceClassPathBinder("org.opendaylight");

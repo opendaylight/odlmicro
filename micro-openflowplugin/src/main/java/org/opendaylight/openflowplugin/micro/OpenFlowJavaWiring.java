@@ -12,6 +12,7 @@ import static com.google.common.collect.Lists.newArrayList;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import org.opendaylight.controller.micro.ConfigReader;
+import org.opendaylight.openflowjava.protocol.impl.core.OpenflowDiagStatusProviderImpl;
 import org.opendaylight.openflowjava.protocol.spi.connection.SwitchConnectionProvider;
 import org.opendaylight.openflowjava.protocol.spi.connection.SwitchConnectionProviderFactory;
 import org.opendaylight.openflowjava.protocol.spi.connection.SwitchConnectionProviderList;
@@ -30,18 +31,19 @@ public class OpenFlowJavaWiring {
 
     @Inject
     public OpenFlowJavaWiring(ConfigReader configReader,
-            SwitchConnectionProviderFactory switchConnectionProviderFactory) {
+            SwitchConnectionProviderFactory switchConnectionProviderFactory,
+            OpenflowDiagStatusProviderImpl openflowDiagStatusProviderImpl) {
         SwitchConnectionConfig defaultSwitchConnConfig = configReader
                 .read("/initial/default-openflow-connection-config", SwitchConnectionConfig.class,
                       "openflow-switch-connection-provider-default-impl");
         SwitchConnectionProvider defaultSwitchConnProvider = switchConnectionProviderFactory
-                .newInstance(defaultSwitchConnConfig);
+                .newInstance(defaultSwitchConnConfig, openflowDiagStatusProviderImpl);
 
         SwitchConnectionConfig legacySwitchConnConfig = configReader
                 .read("/initial/legacy-openflow-connection-config",SwitchConnectionConfig.class,
                       "openflow-switch-connection-provider-legacy-impl");
         SwitchConnectionProvider legacySwitchConnProvider = switchConnectionProviderFactory
-                .newInstance(legacySwitchConnConfig);
+                .newInstance(legacySwitchConnConfig, openflowDiagStatusProviderImpl);
 
         switchConnectionProviderList = new SwitchConnectionProviderList(
                 newArrayList(defaultSwitchConnProvider, legacySwitchConnProvider));

@@ -17,9 +17,7 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <groupId>org.opendaylight.odlmicro</groupId>
   <artifactId>micro-netconf</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
 
   <dependencies>
 
@@ -53,6 +51,12 @@
       <groupId>org.opendaylight.netconf</groupId>
       <artifactId>netconf-topology</artifactId>
     </dependency>
+    
+    <dependency>
+      <groupId>org.opendaylight.netconf</groupId>
+      <artifactId>netconf-topology-impl</artifactId>
+    </dependency>
+    
 
     <dependency>
       <groupId>org.opendaylight.netconf</groupId>
@@ -73,6 +77,12 @@
       <groupId>org.opendaylight.netconf</groupId>
       <artifactId>mdsal-netconf-connector</artifactId>
     </dependency>
+
+	<dependency>
+		<groupId>org.opendaylight.netconf</groupId>
+		<artifactId>sal-netconf-connector</artifactId>
+		<version>1.12.0-SNAPSHOT</version>
+	</dependency>
 
     <!--controller-->
     <dependency>
