@@ -9,9 +9,9 @@ package org.opendaylight.aaa.micro;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
-import javax.annotation.Nullable;
 import javax.inject.Singleton;
-
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import org.opendaylight.aaa.api.AuthenticationException;
 import org.opendaylight.aaa.api.Claim;
 import org.opendaylight.aaa.api.CredentialAuth;
@@ -47,6 +47,12 @@ public class AAAModule extends AbstractModule {
                             .build();
                 }
                 return null;
+            }
+
+            @Override
+            public @NonNull Class<PasswordCredentials> credentialClass() {
+                // TODO Auto-generated method stub
+                return PasswordCredentials.class;
             }
         };
     }
