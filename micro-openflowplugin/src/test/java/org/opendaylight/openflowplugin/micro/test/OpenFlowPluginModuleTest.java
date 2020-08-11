@@ -51,8 +51,8 @@ public class OpenFlowPluginModuleTest extends AbstractSimpleDistributionTest {
     @Inject DiagStatusService diagStatus;
 
     @Test public void testConfig() throws InterruptedException {
-        assertThat(ofpConfig.getGlobalNotificationQuota()).named("globalNotificationQuota").isEqualTo(64000L);
-        assertThat(frmConfig.getReconciliationRetryCount()).named("reconciliationRetryCount").isEqualTo(5);
+        assertThat(ofpConfig.getGlobalNotificationQuota()).isEqualTo(64000L);
+        assertThat(frmConfig.getReconciliationRetryCount()).isEqualTo(5);
     }
 
     @Test
