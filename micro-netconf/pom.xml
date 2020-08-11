@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
  Copyright © 2018 Red Hat, Inc. and others. All rights reserved.
-
  This program and the accompanying materials are made available under the
  terms of the Eclipse Public License v1.0 which accompanies this distribution,
  and is available at http://www.eclipse.org/legal/epl-v10.html
@@ -17,9 +16,7 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <groupId>org.opendaylight.odlmicro</groupId>
   <artifactId>micro-netconf</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
 
   <dependencies>
 
@@ -56,6 +53,11 @@
 
     <dependency>
       <groupId>org.opendaylight.netconf</groupId>
+      <artifactId>netconf-topology-impl</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.opendaylight.netconf</groupId>
       <artifactId>netconf-topology-singleton</artifactId>
     </dependency>
 
@@ -74,42 +76,31 @@
       <artifactId>mdsal-netconf-connector</artifactId>
     </dependency>
 
-    <!--controller-->
+    <!--controller -->
     <dependency>
       <groupId>org.opendaylight.controller</groupId>
       <artifactId>threadpool-config-impl</artifactId>
-      <version>0.10.0</version>
     </dependency>
 
-    <!--infrautils-->
+    <!--infrautils -->
     <dependency>
       <groupId>org.opendaylight.odlguice</groupId>
       <artifactId>inject.guice</artifactId>
     </dependency>
 
-    <!--infrautils-->
+    <!--infrautils -->
     <dependency>
       <groupId>org.opendaylight.odlguice</groupId>
       <artifactId>inject.guice.testutils</artifactId>
       <scope>compile</scope>
     </dependency>
 
-    <!--aaa-->
+    <!--aaa -->
     <dependency>
-       <groupId>org.opendaylight.aaa</groupId>
-       <artifactId>aaa-cert</artifactId>
-       <version>0.9.0</version>
-       <scope>compile</scope>
-    </dependency>
-
-    <!--controller-->
-    <dependency>
-      <groupId>org.opendaylight.controller</groupId>
-      <artifactId>blueprint</artifactId>
-      <version>0.10.0</version>
+      <groupId>org.opendaylight.aaa</groupId>
+      <artifactId>aaa-cert</artifactId>
       <scope>compile</scope>
     </dependency>
-
   </dependencies>
 
   <build>

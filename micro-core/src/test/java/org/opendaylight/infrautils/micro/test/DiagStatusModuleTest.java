@@ -12,7 +12,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.opendaylight.infrautils.diagstatus.DiagStatusService;
 import org.opendaylight.infrautils.micro.DiagStatusModule;
-import org.opendaylight.infrautils.ready.guice.ReadyModule;
+import org.opendaylight.infrautils.micro.inject.guice.ready.GuiceReadyModule;
 import org.opendaylight.infrautils.web.WebModule;
 import org.opendaylight.odlguice.inject.guice.testutils.AnnotationsModule;
 import org.opendaylight.odlguice.inject.guice.testutils.GuiceRule;
@@ -24,12 +24,14 @@ import org.opendaylight.odlguice.inject.guice.testutils.GuiceRule;
  */
 public class DiagStatusModuleTest {
 
-    public @Rule GuiceRule guice = new GuiceRule(WebModule.class, DiagStatusModule.class, ReadyModule.class,
+    public @Rule GuiceRule guice = new GuiceRule(WebModule.class, DiagStatusModule.class, GuiceReadyModule.class,
             AnnotationsModule.class);
 
     @Inject DiagStatusService diagStatusService;
 
-    @Test public void testDiagStatusService() { }
+    @Test public void testDiagStatusService() {
+
+    }
 
     // TODO separate DiagStatusWiring0Test VS DiagStatusWiring1Test where *1* registers a
     // Module that actually does bind a ServiceStatusProvider ...
