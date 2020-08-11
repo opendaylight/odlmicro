@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
- Copyright © 2018 Red Hat, Inc. and others. All rights reserved.
-
- This program and the accompanying materials are made available under the
- terms of the Eclipse Public License v1.0 which accompanies this distribution,
- and is available at http://www.eclipse.org/legal/epl-v10.html
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<!-- Copyright © 2018 Red Hat, Inc. and others. All rights reserved. This 
+  program and the accompanying materials are made available under the terms 
+  of the Eclipse Public License v1.0 which accompanies this distribution, and 
+  is available at http://www.eclipse.org/legal/epl-v10.html -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
@@ -17,9 +15,7 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <groupId>org.opendaylight.odlmicro</groupId>
   <artifactId>micro-netconf</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
 
   <dependencies>
 
@@ -56,6 +52,11 @@
 
     <dependency>
       <groupId>org.opendaylight.netconf</groupId>
+      <artifactId>netconf-topology-impl</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.opendaylight.netconf</groupId>
       <artifactId>netconf-topology-singleton</artifactId>
     </dependency>
 
@@ -74,42 +75,31 @@
       <artifactId>mdsal-netconf-connector</artifactId>
     </dependency>
 
-    <!--controller-->
+    <!--controller -->
     <dependency>
       <groupId>org.opendaylight.controller</groupId>
       <artifactId>threadpool-config-impl</artifactId>
-      <version>0.10.0</version>
     </dependency>
 
-    <!--infrautils-->
+    <!--infrautils -->
     <dependency>
       <groupId>org.opendaylight.odlguice</groupId>
       <artifactId>inject.guice</artifactId>
     </dependency>
 
-    <!--infrautils-->
+    <!--infrautils -->
     <dependency>
       <groupId>org.opendaylight.odlguice</groupId>
       <artifactId>inject.guice.testutils</artifactId>
       <scope>compile</scope>
     </dependency>
 
-    <!--aaa-->
+    <!--aaa -->
     <dependency>
-       <groupId>org.opendaylight.aaa</groupId>
-       <artifactId>aaa-cert</artifactId>
-       <version>0.9.0</version>
-       <scope>compile</scope>
-    </dependency>
-
-    <!--controller-->
-    <dependency>
-      <groupId>org.opendaylight.controller</groupId>
-      <artifactId>blueprint</artifactId>
-      <version>0.10.0</version>
+      <groupId>org.opendaylight.aaa</groupId>
+      <artifactId>aaa-cert</artifactId>
       <scope>compile</scope>
     </dependency>
-
   </dependencies>
 
   <build>
@@ -143,7 +133,8 @@
               <classpathPrefix>lib/</classpathPrefix>
               <!-- <classpathLayoutType>repository</classpathLayoutType> -->
               <classpathLayoutType>custom</classpathLayoutType>
-              <!-- This must match the outputFileNameMapping in the micro.xml assembly descriptor -->
+              <!-- This must match the outputFileNameMapping in the micro.xml 
+                assembly descriptor -->
               <customClasspathLayout>$${artifact.groupId}.$${artifact.artifactId}-$${artifact.version}$${dashClassifier?}.$${artifact.extension}</customClasspathLayout>
               <mainClass>org.opendaylight.netconf.micro.NetconfMain</mainClass>
             </manifest>

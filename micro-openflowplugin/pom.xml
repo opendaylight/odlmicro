@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
- Copyright © 2018 Red Hat, Inc. and others. All rights reserved.
-
- This program and the accompanying materials are made available under the
- terms of the Eclipse Public License v1.0 which accompanies this distribution,
- and is available at http://www.eclipse.org/legal/epl-v10.html
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<!-- Copyright © 2018 Red Hat, Inc. and others. All rights reserved. This 
+  program and the accompanying materials are made available under the terms 
+  of the Eclipse Public License v1.0 which accompanies this distribution, and 
+  is available at http://www.eclipse.org/legal/epl-v10.html -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
@@ -17,16 +15,14 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <groupId>org.opendaylight.odlmicro</groupId>
   <artifactId>micro-openflowplugin</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>org.opendaylight.openflowplugin</groupId>
         <artifactId>openflowplugin-artifacts</artifactId>
-        <version>0.8.0</version>
+        <version>0.11.0-SNAPSHOT</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -34,7 +30,6 @@
   </dependencyManagement>
 
   <dependencies>
-
     <dependency>
       <groupId>org.opendaylight.odlmicro</groupId>
       <artifactId>micro-core</artifactId>
@@ -43,6 +38,10 @@
     <dependency>
       <groupId>org.opendaylight.openflowplugin.openflowjava</groupId>
       <artifactId>openflow-protocol-spi</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.opendaylight.openflowplugin.openflowjava</groupId>
+      <artifactId>openflow-protocol-api</artifactId>
     </dependency>
     <dependency>
       <groupId>org.opendaylight.openflowplugin.openflowjava</groupId>
@@ -63,7 +62,6 @@
     <dependency>
       <groupId>org.opendaylight.aaa.web</groupId>
       <artifactId>testutils</artifactId>
-      <version>0.9.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -75,22 +73,23 @@
       <groupId>org.opendaylight.odlguice</groupId>
       <artifactId>inject.guice.testutils</artifactId>
       <scope>compile</scope>
-      <!-- TODO <scope>test</scope> instead of compile here once I'll create
-           a new infrautils:inject.guice.testutils (non-testutils) for the run-time part.. -->
+      <!-- TODO <scope>test</scope> instead of compile here once I'll create 
+        a new infrautils:inject.guice.testutils (non-testutils) for the run-time 
+        part.. -->
     </dependency>
-    <!--  TODO remove, this is just a temporary hack, see above -->
+    <!-- TODO remove, this is just a temporary hack, see above -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>compile</scope>
     </dependency>
-    <!--  TODO remove when https://git.opendaylight.org/gerrit/#/c/67763/ is merged and odlparent bumped -->
+    <!-- TODO remove when https://git.opendaylight.org/gerrit/#/c/67763/ 
+      is merged and odlparent bumped -->
     <dependency>
       <groupId>org.opendaylight.odlguice</groupId>
       <artifactId>inject.guice.extensions.jsr250</artifactId>
       <scope>compile</scope>
     </dependency>
-
   </dependencies>
 
   <build>
@@ -124,7 +123,8 @@
               <classpathPrefix>lib/</classpathPrefix>
               <!-- <classpathLayoutType>repository</classpathLayoutType> -->
               <classpathLayoutType>custom</classpathLayoutType>
-              <!-- This must match the outputFileNameMapping in the micro.xml assembly descriptor -->
+              <!-- This must match the outputFileNameMapping in the micro.xml 
+                assembly descriptor -->
               <customClasspathLayout>$${artifact.groupId}.$${artifact.artifactId}-$${artifact.version}$${dashClassifier?}.$${artifact.extension}</customClasspathLayout>
               <mainClass>org.opendaylight.openflowplugin.micro.OpenFlowPluginMain</mainClass>
             </manifest>

@@ -9,12 +9,13 @@ package org.opendaylight.openflowplugin.micro;
 
 import com.google.inject.Provides;
 import javax.inject.Singleton;
-import org.opendaylight.controller.md.sal.binding.api.DataBroker;
 import org.opendaylight.controller.micro.ConfigReader;
+import org.opendaylight.mdsal.binding.api.DataBroker;
 import org.opendaylight.mdsal.binding.api.RpcConsumerRegistry;
-import org.opendaylight.mdsal.micro.PingPong;
 import org.opendaylight.odlguice.inject.guice.AutoWiringModule;
 import org.opendaylight.odlguice.inject.guice.GuiceClassPathBinder;
+import org.opendaylight.openflowjava.protocol.api.connection.OpenflowDiagStatusProvider;
+import org.opendaylight.openflowjava.protocol.impl.core.OpenflowDiagStatusProviderImpl;
 import org.opendaylight.openflowjava.protocol.impl.core.SwitchConnectionProviderFactoryImpl;
 import org.opendaylight.openflowjava.protocol.spi.connection.SwitchConnectionProviderFactory;
 import org.opendaylight.openflowjava.protocol.spi.connection.SwitchConnectionProviderList;
@@ -37,6 +38,7 @@ public class OpenFlowPluginModule extends AutoWiringModule {
     protected void configureMore() {
         // TODO curious that this is needed despite SwitchConnectionProviderFactoryImpl being annotated?!
         bind(SwitchConnectionProviderFactory.class).to(SwitchConnectionProviderFactoryImpl.class);
+        bind(OpenflowDiagStatusProvider.class).to(OpenflowDiagStatusProviderImpl.class);
     }
 
     @Provides
@@ -45,8 +47,8 @@ public class OpenFlowPluginModule extends AutoWiringModule {
     }
 
     @Provides
-    @Singleton PingPongDataBroker getPingPongDataBroker(@PingPong DataBroker pingPongDataBroker) {
-        return new ForwardingPingPongDataBroker(pingPongDataBroker);
+    @Singleton PingPongDataBroker getPingPongDataBroker(DataBroker dataBroker) {
+        return new ForwardingPingPongDataBroker(dataBroker);
     }
 
     @Provides

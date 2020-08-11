@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
- Copyright © 2018 Red Hat, Inc. and others. All rights reserved.
-
- This program and the accompanying materials are made available under the
- terms of the Eclipse Public License v1.0 which accompanies this distribution,
- and is available at http://www.eclipse.org/legal/epl-v10.html
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<!-- Copyright © 2018 Red Hat, Inc. and others. All rights reserved. This 
+  program and the accompanying materials are made available under the terms 
+  of the Eclipse Public License v1.0 which accompanies this distribution, and 
+  is available at http://www.eclipse.org/legal/epl-v10.html -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.opendaylight.infrautils</groupId>
-    <artifactId>parent</artifactId>
-    <version>1.5.0</version>
-    <relativePath />
+    <groupId>org.opendaylight.odlparent</groupId>
+    <artifactId>bundle-parent</artifactId>
+    <version>7.0.5</version>
   </parent>
 
   <groupId>org.opendaylight.odlmicro</groupId>
@@ -23,9 +20,10 @@
   <packaging>pom</packaging>
 
   <properties>
-    <!-- TODO remove this (to inherit the skip>false from infrautils' parent),
-         as soon as all of https://git.opendaylight.org/gerrit/#/q/topic:micro-dist are in,
-         notably e.g. https://git.opendaylight.org/gerrit/#/c/67179/ et al. (and we bumped odlparent) -->
+    <!-- TODO remove this (to inherit the skip>false from infrautils' parent), 
+      as soon as all of https://git.opendaylight.org/gerrit/#/q/topic:micro-dist 
+      are in, notably e.g. https://git.opendaylight.org/gerrit/#/c/67179/ et al. 
+      (and we bumped odlparent) -->
     <duplicate-finder.skip>true</duplicate-finder.skip>
     <maven.javadoc.skip>true</maven.javadoc.skip>
   </properties>
@@ -36,81 +34,57 @@
       <dependency>
         <groupId>org.opendaylight.infrautils</groupId>
         <artifactId>infrautils-artifacts</artifactId>
-        <version>1.5.0</version>
+        <version>1.8.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>org.opendaylight.yangtools</groupId>
         <artifactId>yangtools-artifacts</artifactId>
-        <version>2.1.8</version>
+        <version>5.0.5</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>org.opendaylight.aaa</groupId>
         <artifactId>aaa-artifacts</artifactId>
-        <version>0.9.0</version>
+        <version>0.12.0-SNAPSHOT</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>org.opendaylight.controller</groupId>
-        <artifactId>mdsal-artifacts</artifactId>
-        <version>1.9.0</version>
+        <artifactId>controller-artifacts</artifactId>
+        <version>2.0.3</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>org.opendaylight.mdsal</groupId>
         <artifactId>mdsal-artifacts</artifactId>
-        <version>3.0.6</version>
+        <version>6.0.4</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>org.opendaylight.netconf</groupId>
         <artifactId>netconf-artifacts</artifactId>
-        <version>1.6.0</version>
+        <version>1.9.0-SNAPSHOT</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <dependency>
-        <groupId>org.opendaylight.netconf</groupId>
-        <artifactId>restconf-artifacts</artifactId>
-        <version>1.9.0</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-
-<!--
-      <dependency>
-        <groupId>org.opendaylight.neutron</groupId>
-        <artifactId>neutron-artifacts</artifactId>
-        <version>0.10.0</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.opendaylight.daexim</groupId>
-        <artifactId>daexim-artifacts</artifactId>
-        <version>1.3.0</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-  -->
-      <dependency>
-        <groupId>org.opendaylight.netvirt</groupId>
-        <artifactId>netvirt-artifacts</artifactId>
-        <version>0.8.0</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
+      <!-- <dependency> <groupId>org.opendaylight.netconf</groupId> <artifactId>restconf-artifacts</artifactId> 
+        <version>1.12.0-SNAPSHOT</version> <type>pom</type> <scope>import</scope> 
+        </dependency> -->
+      <!-- <dependency> <groupId>org.opendaylight.neutron</groupId> <artifactId>neutron-artifacts</artifactId> 
+        <version>0.10.0</version> <type>pom</type> <scope>import</scope> </dependency> 
+        <dependency> <groupId>org.opendaylight.daexim</groupId> <artifactId>daexim-artifacts</artifactId> 
+        <version>1.3.0</version> <type>pom</type> <scope>import</scope> </dependency> -->
       <dependency>
         <groupId>org.glassfish.jersey.bundles.repackaged</groupId>
         <artifactId>jersey-guava</artifactId>
-        <!-- TODO Figure out and clean up why we need this.. without it, you hit:
-             java.lang.NoSuchMethodError: jersey.repackaged.com.google.common.collect.Iterables.concat(Ljava/lang/Iterable;Ljava/lang/Iterable;)Ljava/lang/Iterable; -->
+        <!-- TODO Figure out and clean up why we need this.. without it, 
+          you hit: java.lang.NoSuchMethodError: jersey.repackaged.com.google.common.collect.Iterables.concat(Ljava/lang/Iterable;Ljava/lang/Iterable;)Ljava/lang/Iterable; -->
         <version>2.8</version>
       </dependency>
       <dependency>
@@ -124,13 +98,12 @@
   </dependencyManagement>
 
   <dependencies>
-
     <dependency>
       <groupId>org.osgi</groupId>
-      <artifactId>org.osgi.compendium</artifactId>
+      <artifactId>osgi.cmpn</artifactId>
       <scope>compile</scope>
     </dependency>
-      <!-- Logging related -->
+    <!-- Logging related -->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
@@ -152,42 +125,27 @@
       <artifactId>activation</artifactId>
       <version>1.1.1</version>
     </dependency>
-
-    <!--controller-->
+    <!--controller -->
     <dependency>
       <groupId>org.opendaylight.controller</groupId>
       <artifactId>blueprint</artifactId>
-      <version>0.10.0</version>
+      <version>2.0.3</version>
       <scope>compile</scope>
     </dependency>
-
-    <!--mdsal-->
-    <dependency>
-      <!-- TODO remove this temporary v0.1 hack; see org.opendaylight.controller.micro.ControllerModule -->
-      <groupId>org.opendaylight.controller</groupId>
-      <artifactId>sal-binding-broker-impl</artifactId>
-      <type>test-jar</type>
-      <scope>compile</scope>
-<!-- TODO
-      <exclusions>
-        <exclusion>
-          <groupId>org.osgi</groupId>
-          <artifactId>org.osgi.core</artifactId>
-        </exclusion>
-      </exclusions>
- -->
-    </dependency>
-  
+    <!--mdsal -->
+    <!-- <dependency> TODO remove this temporary v0.1 hack; see org.opendaylight.controller.micro.ControllerModule 
+      <groupId>org.opendaylight.controller</groupId> <artifactId>sal-binding-broker-impl</artifactId> 
+      <type>test-jar</type> <scope>compile</scope> TODO <exclusions> <exclusion> 
+      <groupId>org.osgi</groupId> <artifactId>org.osgi.core</artifactId> </exclusion> 
+      </exclusions> </dependency> -->
   </dependencies>
   <modules>
     <module>micro-core</module>
     <module>micro-netconf</module>
     <module>micro-openflowplugin</module>
     <module>micro-ovsdb</module>
-    <!--module>micro-genius</module>
-    <module>micro-netvirt</module>
-    <module>micro-neutron</module>
-    <module>micro-ovsdb</module-->
+    <!--module>micro-genius</module> <module>micro-netvirt</module> <module>micro-neutron</module> 
+      <module>micro-ovsdb</module -->
   </modules>
 
 </project>

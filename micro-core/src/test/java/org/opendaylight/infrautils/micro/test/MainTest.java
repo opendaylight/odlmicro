@@ -8,7 +8,7 @@
 package org.opendaylight.infrautils.micro.test;
 
 import org.opendaylight.infrautils.micro.Main;
-import org.opendaylight.infrautils.ready.guice.ReadyModule;
+import org.opendaylight.infrautils.micro.inject.guice.ready.GuiceReadyModule;
 import org.opendaylight.odlguice.inject.guice.testutils.AbstractGuiceJsr250Module;
 
 /**
@@ -26,7 +26,7 @@ public class MainTest {
     public static class TestModule extends AbstractGuiceJsr250Module {
         @Override
         protected void configureBindings() {
-            install(new ReadyModule());
+            install(new GuiceReadyModule());
 
             // bind(SomeInterfaceWithPostConstruct.class).to(SomeClassWithPostConstruct.class);
         }

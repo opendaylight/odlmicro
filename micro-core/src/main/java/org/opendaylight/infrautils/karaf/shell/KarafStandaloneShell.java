@@ -11,6 +11,7 @@ import static java.util.Objects.requireNonNull;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.inject.Injector;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Set;
@@ -57,6 +58,7 @@ public class KarafStandaloneShell {
         }
 
         @SuppressWarnings("checkstyle:RegexpSingleLineJava")
+        @SuppressFBWarnings(value = { "UPM_UNCALLED_PRIVATE_METHOD", "UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR" })
         // TODO This should ideally only be in src/test, not src/main ...
         private void testAllRegisteredCommands() throws Exception {
             SessionFactory sessionFactory = createSessionFactory(null);

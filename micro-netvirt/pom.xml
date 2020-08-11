@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
- Copyright © 2018 Red Hat, Inc. and others. All rights reserved.
-
- This program and the accompanying materials are made available under the
- terms of the Eclipse Public License v1.0 which accompanies this distribution,
- and is available at http://www.eclipse.org/legal/epl-v10.html
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<!-- Copyright © 2018 Red Hat, Inc. and others. All rights reserved. This 
+  program and the accompanying materials are made available under the terms 
+  of the Eclipse Public License v1.0 which accompanies this distribution, and 
+  is available at http://www.eclipse.org/legal/epl-v10.html -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
@@ -21,8 +19,20 @@
   <artifactId>micro-netvirt</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
-  <dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.opendaylight.netvirt</groupId>
+        <artifactId>netvirt-artifacts</artifactId>
+        <version>0.11.0-SNAPSHOT</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
+
+  <dependencies>
     <dependency>
       <groupId>org.opendaylight.odlmicro</groupId>
       <artifactId>micro-genius</artifactId>
@@ -33,47 +43,47 @@
       <classifier>features</classifier>
       <type>xml</type>
       <exclusions>
-        <!-- TODO Figure out why M2E breaks down over (just) neutronvpn-impl's <classifier>config <type>xml ... -->
+        <!-- TODO Figure out why M2E breaks down over (just) neutronvpn-impl's 
+          <classifier>config <type>xml ... -->
         <exclusion>
           <groupId>org.opendaylight.netvirt</groupId>
           <artifactId>neutronvpn-impl</artifactId>
         </exclusion>
         <exclusion>
           <groupId>org.opendaylight.netvirt</groupId>
-          <!-- bgpmanager needs Thrift, which for some reason is not transitively pulled (TODO find out why);
-               But we, currently at least, have no interest in bgpmanager anyway, so exclude it here, for now. -->
+          <!-- bgpmanager needs Thrift, which for some reason is not transitively 
+            pulled (TODO find out why); But we, currently at least, have no interest 
+            in bgpmanager anyway, so exclude it here, for now. -->
           <artifactId>bgpmanager-impl</artifactId>
         </exclusion>
-        <!-- karaf.shell.console leads to various duplicate classpath entries; we only support shell.core -->
+        <!-- karaf.shell.console leads to various duplicate classpath entries; 
+          we only support shell.core -->
         <exclusion>
           <groupId>org.apache.karaf.shell</groupId>
           <artifactId>org.apache.karaf.shell.console</artifactId>
         </exclusion>
-        <!-- osgi.core overlaps (x5) with felix.configadmin, and we don't need it here anyway
-             TODO EXCLUDE IT AGAIN LATER; FOR NOW, SOME CLASSES UNFORTUNATELY STILL REFERENCE IT
-        <exclusion>
-          <groupId>org.osgi</groupId>
-          <artifactId>org.osgi.core</artifactId>
-        </exclusion>
-         -->
-        <!-- osgi.compendium (big) overlaps (x12) with (small) felix.configadmin, and with org.osgi.service.event (x9)
-        <exclusion>
-          <groupId>org.osgi</groupId>
-          <artifactId>org.osgi.compendium</artifactId>
-        </exclusion>
-    TODO but shiro.web.env.EnvironmentLoader currently requires org.osgi.service.http.NamespaceException,
-    which is available in osgi.compendium, thus commented; so sort out duplicate classpath entries with exclusion of felix.configadmin instead, and remove this
- -->
+        <!-- osgi.core overlaps (x5) with felix.configadmin, and we don't 
+          need it here anyway TODO EXCLUDE IT AGAIN LATER; FOR NOW, SOME CLASSES UNFORTUNATELY 
+          STILL REFERENCE IT <exclusion> <groupId>org.osgi</groupId> <artifactId>org.osgi.core</artifactId> 
+          </exclusion> -->
+        <!-- osgi.compendium (big) overlaps (x12) with (small) felix.configadmin, 
+          and with org.osgi.service.event (x9) <exclusion> <groupId>org.osgi</groupId> 
+          <artifactId>org.osgi.compendium</artifactId> </exclusion> TODO but shiro.web.env.EnvironmentLoader 
+          currently requires org.osgi.service.http.NamespaceException, which is available 
+          in osgi.compendium, thus commented; so sort out duplicate classpath entries 
+          with exclusion of felix.configadmin instead, and remove this -->
         <exclusion>
           <groupId>org.opendaylight.netconf</groupId>
           <artifactId>odl-restconf-noauth</artifactId>
         </exclusion>
-        <!-- TODO Remove when this is merged and we bumped to an odlparent with it: https://git.opendaylight.org/gerrit/#/c/67184/ -->
+        <!-- TODO Remove when this is merged and we bumped to an odlparent 
+          with it: https://git.opendaylight.org/gerrit/#/c/67184/ -->
         <exclusion>
           <groupId>javax.annotation</groupId>
           <artifactId>jsr250-api</artifactId>
         </exclusion>
-        <!-- TODO Remove when this is merged and we bumped to an odlparent with it: https://git.opendaylight.org/gerrit/#/c/67185/ -->
+        <!-- TODO Remove when this is merged and we bumped to an odlparent 
+          with it: https://git.opendaylight.org/gerrit/#/c/67185/ -->
         <exclusion>
           <groupId>org.iq80.leveldb</groupId>
           <artifactId>leveldb-api</artifactId>
@@ -96,7 +106,6 @@
         </exclusion>
       </exclusions>
     </dependency>
-
   </dependencies>
 
   <build>
@@ -130,7 +139,8 @@
               <classpathPrefix>lib/</classpathPrefix>
               <!-- <classpathLayoutType>repository</classpathLayoutType> -->
               <classpathLayoutType>custom</classpathLayoutType>
-              <!-- This must match the outputFileNameMapping in the micro.xml assembly descriptor -->
+              <!-- This must match the outputFileNameMapping in the micro.xml 
+                assembly descriptor -->
               <customClasspathLayout>$${artifact.groupId}.$${artifact.artifactId}-$${artifact.version}$${dashClassifier?}.$${artifact.extension}</customClasspathLayout>
               <mainClass>org.opendaylight.netvirt.micro.NetvirtMain</mainClass>
             </manifest>
