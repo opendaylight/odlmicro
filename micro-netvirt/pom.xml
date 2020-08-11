@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
  Copyright © 2018 Red Hat, Inc. and others. All rights reserved.
-
  This program and the accompanying materials are made available under the
  terms of the Eclipse Public License v1.0 which accompanies this distribution,
  and is available at http://www.eclipse.org/legal/epl-v10.html
@@ -21,8 +20,20 @@
   <artifactId>micro-netvirt</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
-  <dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.opendaylight.netvirt</groupId>
+        <artifactId>netvirt-artifacts</artifactId>
+        <version>0.11.0-SNAPSHOT</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
+
+  <dependencies>
     <dependency>
       <groupId>org.opendaylight.odlmicro</groupId>
       <artifactId>micro-genius</artifactId>
@@ -96,7 +107,6 @@
         </exclusion>
       </exclusions>
     </dependency>
-
   </dependencies>
 
   <build>

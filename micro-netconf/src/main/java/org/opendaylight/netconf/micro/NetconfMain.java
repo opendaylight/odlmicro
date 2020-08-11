@@ -12,7 +12,8 @@ import org.opendaylight.odlguice.inject.guice.GuiceClassPathBinder;
 
 public final class NetconfMain {
 
-    private NetconfMain() { }
+    private NetconfMain() {
+    }
 
     public static void main(String[] args) {
         GuiceClassPathBinder classPathBinder = new GuiceClassPathBinder("org.opendaylight");
