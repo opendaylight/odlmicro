@@ -8,6 +8,7 @@
 package org.opendaylight.infrautils.web;
 
 import com.google.inject.AbstractModule;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.opendaylight.aaa.web.WebContextSecurer;
 import org.opendaylight.aaa.web.WebServer;
 import org.opendaylight.aaa.web.jetty.JettyWebServer;
@@ -19,19 +20,23 @@ import org.opendaylight.aaa.web.servlet.jersey2.JerseyServletSupport;
  *
  * @author Michael Vorburger.ch
  */
+@SuppressFBWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
 public class WebModule extends AbstractModule {
 
     // TODO note (new) org.opendaylight.aaa.web.testutils.WebTestModule .. integrate?
+//    private JettyWebServer webserver;
 
     @Override
     protected void configure() {
         // TODO read port from a -D parameter or configuration file instead of hard-coding
-        bind(WebServer.class).toInstance(new JettyWebServer(8181));
+//        webserver = new JettyWebServer(8181);
+        bind(WebServer.class).to(JettyWebServer.class);
 
         // JAX-RS
         bind(ServletSupport.class).to(JerseyServletSupport.class);
 
+
         // TODO replace this NOOP WebContextSecurer with one with a fixed uid/pwd for HTTP BASIC (and ditch AAA)
-        bind(WebContextSecurer.class).toInstance((webContextBuilder, urlPatterns) -> { });
+        bind(WebContextSecurer.class).toInstance((webContextBuilder, asyncSupported, urlPatterns) -> { });
     }
 }

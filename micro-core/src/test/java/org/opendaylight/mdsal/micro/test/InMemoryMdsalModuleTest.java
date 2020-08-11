@@ -16,7 +16,6 @@ import org.opendaylight.infrautils.micro.testutils.AbstractSimpleDistributionTes
 import org.opendaylight.mdsal.binding.api.DataBroker;
 import org.opendaylight.mdsal.binding.api.RpcConsumerRegistry;
 import org.opendaylight.mdsal.binding.api.RpcProviderService;
-import org.opendaylight.mdsal.micro.PingPong;
 import org.opendaylight.odlguice.inject.guice.testutils.AnnotationsModule;
 import org.opendaylight.odlguice.inject.guice.testutils.GuiceRule;
 
@@ -24,7 +23,7 @@ public class InMemoryMdsalModuleTest extends AbstractSimpleDistributionTest {
 
     public @Rule GuiceRule guice = new GuiceRule(InMemoryControllerModule.class, AnnotationsModule.class);
 
-    @Inject @PingPong DataBroker pingPongDataBroker;
+//    @Inject DataBroker pingPongDataBroker;
     @Inject DataBroker dataBroker;
 
     @Inject RpcProviderService rpcProviderService;

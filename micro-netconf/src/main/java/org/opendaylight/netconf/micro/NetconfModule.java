@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import javax.inject.Singleton;
 import org.opendaylight.aaa.api.CredentialAuth;
+import org.opendaylight.aaa.api.PasswordCredentialAuth;
 import org.opendaylight.aaa.api.PasswordCredentials;
 import org.opendaylight.aaa.encrypt.AAAEncryptionService;
 import org.opendaylight.aaa.micro.AAAModule;
@@ -53,9 +54,11 @@ import org.opendaylight.netconf.micro.annotations.GlobalNetconfProcessingExecuto
 import org.opendaylight.netconf.micro.annotations.GlobalNetconfSshScheduledExecutor;
 import org.opendaylight.netconf.micro.annotations.MdsalNetconfConnector;
 import org.opendaylight.netconf.micro.annotations.NetconfAuthProvider;
+import org.opendaylight.netconf.sal.connect.impl.DefaultSchemaResourceManager;
+import org.opendaylight.netconf.sal.connect.netconf.DeviceActionFactoryImpl;
+import org.opendaylight.netconf.sal.connect.netconf.schema.mapping.DefaultBaseNetconfSchemas;
 import org.opendaylight.netconf.topology.api.NetconfTopology;
 import org.opendaylight.netconf.topology.impl.NetconfTopologyImpl;
-import org.opendaylight.netconf.topology.impl.SchemaRepositoryProviderImpl;
 import org.opendaylight.odlguice.inject.guice.AutoWiringModule;
 import org.opendaylight.odlguice.inject.guice.GuiceClassPathBinder;
 import org.opendaylight.odlguice.inject.guice.testutils.AnnotationsModule;
@@ -217,35 +220,41 @@ public class NetconfModule extends AutoWiringModule {
 
     // Converted here from netconf-topology/src/main/resources/OSGI-INF/blueprint/netconf-topology.xml
     // START
-    @Provides
-    @Singleton
-    SchemaRepositoryProviderImpl getSchemaRepositoryProviderImpl(
-            ServerChannelInitializer serverChannelInitializer,
-            @GlobalBossGroup EventLoopGroup globalBossGroup,
-            @GlobalWorkerGroup EventLoopGroup globalWorkerGroup) {
-        return new SchemaRepositoryProviderImpl("shared-schema-repository-impl");
-    }
-
+    /*
+     * @Provides
+     *
+     * @Singleton SchemaRepositoryProviderImpl getSchemaRepositoryProviderImpl(
+     * ServerChannelInitializer serverChannelInitializer,
+     *
+     * @GlobalBossGroup EventLoopGroup globalBossGroup,
+     *
+     * @GlobalWorkerGroup EventLoopGroup globalWorkerGroup) { return new
+     * SchemaRepositoryProviderImpl("shared-schema-repository-impl"); }
+     */
     @Provides
     @Singleton
     NetconfTopology getNetconfTopology(@org.opendaylight.netconf.micro.annotations.NetconfClientDispatcher
             NetconfClientDispatcher clientDispatcherDependency,
             @GlobalNetconfSshScheduledExecutor ScheduledThreadPool keepAliveExecutor,
             @GlobalNetconfProcessingExecutor ThreadPool processingExecutor,
-            SchemaRepositoryProviderImpl schemaRepositoryProvider,
+            DefaultSchemaResourceManager defaultSchemaResourceManager,
             @GlobalEventExecutor EventExecutor eventExecutor,
             DataBroker dataBroker,
             DOMMountPointService mountPointService,
-            AAAEncryptionService encryptionService) {
+            AAAEncryptionService encryptionService,
+            DefaultBaseNetconfSchemas defaultBaseNetconfSchemas,
+            DeviceActionFactoryImpl deviceActionFactoryImpl) {
         NetconfTopologyImpl impl = new NetconfTopologyImpl("topology-netconf",
                 clientDispatcherDependency,
                 eventExecutor,
                 keepAliveExecutor,
                 processingExecutor,
-                schemaRepositoryProvider,
+                defaultSchemaResourceManager,
                 dataBroker,
                 mountPointService,
-                encryptionService);
+                encryptionService,
+                defaultBaseNetconfSchemas,
+                deviceActionFactoryImpl);
         impl.init();
         return impl;
     }
@@ -306,7 +315,7 @@ public class NetconfModule extends AutoWiringModule {
     @Singleton
     @NetconfAuthProvider
     CredentialServiceAuthProvider getNetconfAuthProvider(CredentialAuth<PasswordCredentials> credService) {
-        return new CredentialServiceAuthProvider(credService);
+        return new CredentialServiceAuthProvider((PasswordCredentialAuth) credService);
     }
     // Converted here from netconf/aaa-authn-odl-plugin/src/main/resources/OSGI-INF/blueprint/aaa-authn-netconf.xml
     // END

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
  Copyright © 2018 Red Hat, Inc. and others. All rights reserved.
-
  This program and the accompanying materials are made available under the
  terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
 -->
@@ -16,30 +15,28 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <groupId>org.opendaylight.odlmicro</groupId>
   <artifactId>micro-ovsdb</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>org.opendaylight.ovsdb</groupId>
         <artifactId>hwvtepsouthbound-artifacts</artifactId>
-        <version>1.8.0</version>
+        <version>1.11.0-SNAPSHOT</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>org.opendaylight.ovsdb</groupId>
         <artifactId>library-artifacts</artifactId>
-        <version>1.8.0</version>
+        <version>1.11.0-SNAPSHOT</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>org.opendaylight.ovsdb</groupId>
         <artifactId>southbound-artifacts</artifactId>
-        <version>1.8.0</version>
+        <version>1.11.0-SNAPSHOT</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -48,7 +45,6 @@
 
 
   <dependencies>
-
     <dependency>
       <groupId>org.opendaylight.odlmicro</groupId>
       <artifactId>micro-core</artifactId>
@@ -69,7 +65,6 @@
     <dependency>
       <groupId>org.opendaylight.aaa.web</groupId>
       <artifactId>testutils</artifactId>
-      <version>0.9.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -84,7 +79,7 @@
       <!-- TODO <scope>test</scope> instead of compile here once I'll create
            a new infrautils:inject.guice.testutils (non-testutils) for the run-time part.. -->
     </dependency>
-    <!--  TODO remove, this is just a temporary hack, see above -->
+    <!-- TODO remove, this is just a temporary hack, see above -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -96,7 +91,6 @@
       <artifactId>inject.guice.extensions.jsr250</artifactId>
       <scope>compile</scope>
     </dependency>
-
   </dependencies>
 
   <build>
