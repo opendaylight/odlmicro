@@ -11,6 +11,7 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.opendaylight.infrautils.testutils.web.TestWebClient.Method.GET;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import javax.inject.Inject;
 import org.junit.Rule;
 import org.junit.Test;
@@ -36,8 +37,8 @@ public class RestConfModuleTest extends AbstractSimpleDistributionTest {
     @Inject WebServer webServer;
     @Inject TestWebClient http;
 
-    @Test public void testRestConf() throws IOException {
-        assertThat(http.request(GET, "/restconf/modules/").getStatus()).isEqualTo(200);
+    @Test public void testRestConf() throws IOException, InterruptedException, URISyntaxException {
+        assertThat(http.request(GET.name(), "/restconf/modules/").statusCode()).isEqualTo(200);
 
         // TODO test security; add auth support to TestHttpClient, check that w.o. auth it's 401
     }
