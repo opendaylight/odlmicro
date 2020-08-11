@@ -11,11 +11,10 @@ import java.util.concurrent.ExecutionException;
 import javax.inject.Inject;
 import org.junit.Rule;
 import org.junit.Test;
-import org.opendaylight.controller.md.sal.binding.api.DataBroker;
-import org.opendaylight.controller.md.sal.binding.api.NotificationService;
 import org.opendaylight.controller.micro.InMemoryControllerModule;
 import org.opendaylight.infrautils.micro.testutils.AbstractSimpleDistributionTest;
-import org.opendaylight.mdsal.micro.PingPong;
+import org.opendaylight.mdsal.binding.api.DataBroker;
+import org.opendaylight.mdsal.binding.api.NotificationService;
 import org.opendaylight.odlguice.inject.guice.testutils.AnnotationsModule;
 import org.opendaylight.odlguice.inject.guice.testutils.GuiceRule;
 
@@ -24,7 +23,7 @@ public class InMemoryControllerModuleTest extends AbstractSimpleDistributionTest
     public @Rule GuiceRule guice = new GuiceRule(InMemoryControllerModule.class, AnnotationsModule.class);
 
     @Inject DataBroker dataBroker;
-    @Inject @PingPong DataBroker pingPongDataBroker;
+    @Inject DataBroker pingPongDataBroker;
     @Inject NotificationService notificationService;
 
     @Test public void testDataBroker() throws InterruptedException, ExecutionException {
