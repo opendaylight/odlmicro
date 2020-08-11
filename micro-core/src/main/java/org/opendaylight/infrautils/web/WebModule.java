@@ -7,31 +7,44 @@
  */
 package org.opendaylight.infrautils.web;
 
-import com.google.inject.AbstractModule;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.opendaylight.aaa.web.WebContextSecurer;
 import org.opendaylight.aaa.web.WebServer;
 import org.opendaylight.aaa.web.jetty.JettyWebServer;
 import org.opendaylight.aaa.web.servlet.ServletSupport;
 import org.opendaylight.aaa.web.servlet.jersey2.JerseyServletSupport;
+import org.opendaylight.infrautils.inject.guice.AbstractCloseableModule;
+
 
 /**
  * Wiring for a web server.
  *
  * @author Michael Vorburger.ch
  */
-public class WebModule extends AbstractModule {
+@SuppressFBWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
+public class WebModule extends AbstractCloseableModule {
 
     // TODO note (new) org.opendaylight.aaa.web.testutils.WebTestModule .. integrate?
+    private JettyWebServer webserver;
 
     @Override
-    protected void configure() {
+    protected void configureCloseables() {
         // TODO read port from a -D parameter or configuration file instead of hard-coding
-        bind(WebServer.class).toInstance(new JettyWebServer(8181));
+        webserver = new JettyWebServer(8181);
+        bind(WebServer.class).toInstance(webserver);
 
         // JAX-RS
         bind(ServletSupport.class).to(JerseyServletSupport.class);
 
+
         // TODO replace this NOOP WebContextSecurer with one with a fixed uid/pwd for HTTP BASIC (and ditch AAA)
-        bind(WebContextSecurer.class).toInstance((webContextBuilder, urlPatterns) -> { });
+        bind(WebContextSecurer.class).toInstance((webContextBuilder, asyncSupported, urlPatterns) -> { });
+    }
+
+    @Override
+    public void close() throws Exception {
+        if (webserver != null) {
+            webserver.stop();
+        }
     }
 }
