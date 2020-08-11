@@ -56,6 +56,7 @@ public class KarafStandaloneShell {
             }
         }
 
+        @VisibleForTesting
         @SuppressWarnings("checkstyle:RegexpSingleLineJava")
         // TODO This should ideally only be in src/test, not src/main ...
         private void testAllRegisteredCommands() throws Exception {

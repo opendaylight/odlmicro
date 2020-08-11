@@ -29,7 +29,9 @@ public class DiagStatusModuleTest {
 
     @Inject DiagStatusService diagStatusService;
 
-    @Test public void testDiagStatusService() { }
+    @Test public void testDiagStatusService() {
+
+    }
 
     // TODO separate DiagStatusWiring0Test VS DiagStatusWiring1Test where *1* registers a
     // Module that actually does bind a ServiceStatusProvider ...

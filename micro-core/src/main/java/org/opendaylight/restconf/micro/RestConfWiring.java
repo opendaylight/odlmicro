@@ -29,6 +29,7 @@ import org.opendaylight.netconf.sal.restconf.impl.ControllerContext;
 import org.opendaylight.netconf.sal.restconf.impl.RestconfImpl;
 import org.opendaylight.netconf.sal.restconf.impl.RestconfProviderImpl;
 import org.opendaylight.netconf.sal.restconf.impl.StatisticsRestconfServiceWrapper;
+import org.opendaylight.restconf.nb.rfc8040.handlers.ActionServiceHandler;
 import org.opendaylight.restconf.nb.rfc8040.handlers.DOMDataBrokerHandler;
 import org.opendaylight.restconf.nb.rfc8040.handlers.DOMMountPointServiceHandler;
 import org.opendaylight.restconf.nb.rfc8040.handlers.NotificationServiceHandler;
@@ -36,6 +37,7 @@ import org.opendaylight.restconf.nb.rfc8040.handlers.RpcServiceHandler;
 import org.opendaylight.restconf.nb.rfc8040.handlers.SchemaContextHandler;
 import org.opendaylight.restconf.nb.rfc8040.handlers.TransactionChainHandler;
 import org.opendaylight.restconf.nb.rfc8040.services.wrapper.ServicesWrapper;
+import org.opendaylight.restconf.nb.rfc8040.streams.Configuration;
 import org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress;
 import org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddressBuilder;
 import org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.PortNumber;
@@ -68,33 +70,25 @@ public class RestConfWiring {
     @Inject
     public RestConfWiring(RestConfConfig config, WebServer webServer, ServletSupport jaxRS,
             DOMSchemaService domSchemaService, DOMMountPointService domMountPointService, DOMRpcService domRpcService,
-            DOMDataBroker domDataBroker, DOMNotificationService domNotificationService) {
+            DOMDataBroker domDataBroker, DOMNotificationService domNotificationService,
+            TransactionChainHandler transactionChainHandler, SchemaContextHandler schemaCtxHandler,
+            DOMMountPointServiceHandler domMountPointServiceHandler, ControllerContext controllerContext,
+            BrokerFacade broker, RestconfImpl restconf, StatisticsRestconfServiceWrapper stats,
+            ActionServiceHandler actionServiceHandler, final Configuration configuration) {
         this.webServer = webServer;
         LOG.info("config = {}", config);
 
         // WebSocket
-        ControllerContext controllerContext = ControllerContext.newInstance(domSchemaService, domMountPointService,
-                domSchemaService);
-        BrokerFacade broker = BrokerFacade.newInstance(domRpcService, domDataBroker, domNotificationService,
-                controllerContext);
-        RestconfImpl restconf = RestconfImpl.newInstance(broker, controllerContext);
-        StatisticsRestconfServiceWrapper stats = StatisticsRestconfServiceWrapper.newInstance(restconf);
         IpAddress wsIpAddress = IpAddressBuilder.getDefaultInstance(config.webSocketAddress().getHostAddress());
         this.webSockerServer = new RestconfProviderImpl(stats, wsIpAddress, new PortNumber(config.webSocketPort()));
 
         // Servlet
-        TransactionChainHandler transactionChainHandler = new TransactionChainHandler(domDataBroker);
-        SchemaContextHandler schemaCtxHandler = SchemaContextHandler.newInstance(transactionChainHandler,
-                domSchemaService);
-        schemaCtxHandler.init();
-        DOMMountPointServiceHandler domMountPointServiceHandler = DOMMountPointServiceHandler
-                .newInstance(domMountPointService);
         DOMDataBrokerHandler domDataBrokerHandler = new DOMDataBrokerHandler(domDataBroker);
         RpcServiceHandler rpcServiceHandler = new RpcServiceHandler(domRpcService);
         NotificationServiceHandler notificationServiceHandler = new NotificationServiceHandler(domNotificationService);
         ServicesWrapper servicesWrapper = ServicesWrapper.newInstance(schemaCtxHandler, domMountPointServiceHandler,
-                transactionChainHandler, domDataBrokerHandler, rpcServiceHandler, notificationServiceHandler,
-                domSchemaService);
+                transactionChainHandler, domDataBrokerHandler, rpcServiceHandler, actionServiceHandler,
+                notificationServiceHandler, domSchemaService, configuration);
 
         // This is currently hard-coded to DRAFT_18; if we ever actually need to support the
         // older DRAFT_02 for anything, then (only) add it to the RestConfConfig and switch here

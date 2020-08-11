@@ -17,15 +17,13 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <groupId>org.opendaylight.odlmicro</groupId>
   <artifactId>micro-core</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
 
   <dependencies>
-
     <dependency>
       <groupId>org.immutables</groupId>
       <artifactId>value</artifactId>
+      <version>2.7.5</version>
     </dependency>
 
     <dependency>
@@ -87,29 +85,25 @@
     <dependency>
       <groupId>org.opendaylight.controller</groupId>
       <artifactId>netty-event-executor-config</artifactId>
-      <version>0.10.0</version>
-    </dependency>
+      </dependency>
 
     <!--controller-->
     <dependency>
       <groupId>org.opendaylight.controller</groupId>
       <artifactId>netty-threadgroup-config</artifactId>
-      <version>0.10.0</version>
-    </dependency>
+      </dependency>
 
     <!--controller-->
     <dependency>
       <groupId>org.opendaylight.controller</groupId>
       <artifactId>netty-timer-config</artifactId>
-      <version>0.10.0</version>
-    </dependency>
+      </dependency>
 
     <!--controller-->
     <dependency>
       <groupId>org.opendaylight.controller</groupId>
       <artifactId>threadpool-config-impl</artifactId>
-      <version>0.10.0</version>
-    </dependency>
+      </dependency>
 
     <!--mdsal-->
     <dependency>
@@ -146,13 +140,70 @@
       <groupId>org.opendaylight.mdsal</groupId>
       <artifactId>mdsal-binding-dom-adapter</artifactId>
     </dependency>
-
+    
     <!--mdsal-->
-    <dependency>
+	<dependency>
+		<groupId>org.opendaylight.mdsal</groupId>
+		<artifactId>mdsal-binding-api</artifactId>
+	</dependency>
+	
+	<!--mdsal-->
+	<dependency>
+		<groupId>org.opendaylight.mdsal</groupId>
+		<artifactId>mdsal-dom-broker</artifactId>
+	</dependency>
+	
+	<!--mdsal-->
+	<dependency>
+		<groupId>org.opendaylight.mdsal</groupId>
+		<artifactId>mdsal-binding-spi</artifactId>
+	</dependency>
+
+	<!--mdsal-->
+	<dependency>
+		<groupId>org.opendaylight.mdsal</groupId>
+		<artifactId>mdsal-binding-test-utils</artifactId>
+	</dependency>
+	
+	<!--mdsal-->
+	<dependency>
+		<groupId>org.opendaylight.mdsal</groupId>
+		<artifactId>mdsal-binding-dom-codec-api</artifactId>
+	</dependency>
+
+	<dependency>
+		<groupId>org.opendaylight.mdsal</groupId>
+		<artifactId>mdsal-dom-inmemory-datastore</artifactId>
+	</dependency>	
+ 
+	<dependency>
+		<groupId>org.opendaylight.mdsal</groupId>
+		<artifactId>odl-mdsal-binding-runtime</artifactId>
+		<classifier>features</classifier>
+		<type>xml</type>
+	</dependency>
+<!--
+	<dependency>
+		<groupId>org.opendaylight.mdsal</groupId>
+		<artifactId>odl-mdsal-dom-api</artifactId>
+		<classifier>features</classifier>
+		<type>xml</type>
+	</dependency>
+
+	<dependency>
+		<groupId>org.opendaylight.mdsal</groupId>
+		<artifactId>odl-mdsal-binding-api</artifactId>
+		<classifier>features</classifier>
+		<type>xml</type>
+	</dependency>
+    
+ -->
+    <!--mdsal-->
+<!--     <dependency>
       <groupId>org.opendaylight.controller</groupId>
       <artifactId>sal-binding-broker-impl</artifactId>
     </dependency>
-
+ -->
     <!--restconf-->
     <dependency>
       <groupId>org.opendaylight.netconf</groupId>
@@ -168,7 +219,6 @@
     <dependency>
        <groupId>org.opendaylight.aaa</groupId>
        <artifactId>aaa-cert</artifactId>
-       <version>0.9.0</version>
        <scope>compile</scope>
     </dependency>
 
@@ -176,15 +226,13 @@
     <dependency>
        <groupId>org.opendaylight.aaa</groupId>
        <artifactId>aaa-encrypt-service-impl</artifactId>
-       <version>0.9.0</version>
-    </dependency>
+       </dependency>
 
     <!--aaa-->
     <dependency>
        <groupId>org.opendaylight.aaa</groupId>
        <artifactId>aaa-shiro</artifactId>
-       <version>0.9.0</version>
-    </dependency>
+       </dependency>
 
     <!--aaa -->
     <!--dependency>
@@ -204,8 +252,7 @@
     <dependency>
       <groupId>org.opendaylight.aaa</groupId>
       <artifactId>aaa-authn-api</artifactId>
-       <version>0.9.0</version>
-    </dependency>
+       </dependency>
 
     <!--aaa-->
     <dependency>
@@ -221,33 +268,31 @@
     <dependency>
       <groupId>org.opendaylight.aaa.web</groupId>
       <artifactId>web-jetty-impl</artifactId>
-      <version>0.9.0</version>
-    </dependency>
+      </dependency>
     <dependency>
       <groupId>org.opendaylight.aaa.web</groupId>
       <artifactId>servlet-jersey2</artifactId>
-      <version>0.9.0</version>
-    </dependency>
+      </dependency>
 
     <!--serviceutils-->
     <dependency>
       <groupId>org.opendaylight.serviceutils</groupId>
       <artifactId>srm-api</artifactId>
-      <version>0.3.0</version>
+      <version>0.7.0-SNAPSHOT</version>
     </dependency>
 
     <!--serviceutils-->
     <dependency>
       <groupId>org.opendaylight.serviceutils</groupId>
       <artifactId>srm-impl</artifactId>
-      <version>0.3.0</version>
+      <version>0.7.0-SNAPSHOT</version>
     </dependency>
 
     <!--serviceutils-->
     <dependency>
       <groupId>org.opendaylight.serviceutils</groupId>
       <artifactId>upgrade</artifactId>
-      <version>0.3.0</version>
+      <version>0.7.0-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
 
@@ -317,7 +362,6 @@
     <dependency>
       <groupId>org.opendaylight.aaa.web</groupId>
       <artifactId>testutils</artifactId>
-      <version>0.9.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -349,7 +393,7 @@
     <dependency>
       <groupId>org.opendaylight.controller</groupId>
       <artifactId>blueprint</artifactId>
-      <version>0.10.0</version>
+      <version>2.0.4-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
 
@@ -357,10 +401,37 @@
 
   <build>
     <plugins>
+       <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.1</version>
+          <configuration>
+            <showWarnings>true</showWarnings>
+            <forceJavacCompilerUse>true</forceJavacCompilerUse>
+            <compilerArgs>
+              <arg>-parameters</arg>
+              <arg>-Xlint:deprecation</arg>
+              <arg>-Xlint:unchecked</arg>
+            </compilerArgs>
+            <annotationProcessorPaths>
+              <dependency>
+                <groupId>org.immutables</groupId>
+                <artifactId>value</artifactId>
+                <!-- Keep this version in sync with dependency declaration above -->
+                <version>2.7.5</version>
+              </dependency>
+              <dependency>
+                <groupId>org.kohsuke.metainf-services</groupId>
+                <artifactId>metainf-services</artifactId>
+                <!-- Keep this version in sync with dependency declaration above -->
+                <version>1.8</version>
+              </dependency>
+            </annotationProcessorPaths>
+          </configuration>
+        </plugin>
+    
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
         <!-- TODO upstream version into odlparent pluginManagement -->
-        <version>3.1.1</version>
         <configuration>
           <descriptors>
             <descriptor>src/assembly/micro.xml</descriptor>
