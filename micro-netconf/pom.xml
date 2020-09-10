@@ -110,10 +110,18 @@
         <!-- TODO upstream version into odlparent pluginManagement -->
         <version>3.1.1</version>
         <configuration>
-          <descriptors>
+          <!--descriptors>
             <descriptor>src/assembly/micro.xml</descriptor>
           </descriptors>
-          <tarLongFileMode>gnu</tarLongFileMode>
+          <tarLongFileMode>gnu</tarLongFileMode-->
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <archive>
+            <manifest>
+              <mainClass>org.opendaylight.netconf.micro.NetconfMain</mainClass>
+            </manifest>
+          </archive>
         </configuration>
         <executions>
           <execution>

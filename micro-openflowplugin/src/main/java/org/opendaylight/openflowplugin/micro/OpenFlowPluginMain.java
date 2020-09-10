@@ -10,9 +10,9 @@ package org.opendaylight.openflowplugin.micro;
 import org.opendaylight.infrautils.micro.ShellMain;
 import org.opendaylight.odlguice.inject.guice.GuiceClassPathBinder;
 
-public final class OpenflowPluginMain {
+public final class OpenFlowPluginMain {
 
-    private OpenflowPluginMain() {
+    private OpenFlowPluginMain() {
     }
 
     public static void main(String[] args) {
