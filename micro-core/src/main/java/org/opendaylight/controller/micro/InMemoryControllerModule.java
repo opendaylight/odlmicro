@@ -46,6 +46,10 @@ import org.opendaylight.mdsal.eos.dom.simple.SimpleDOMEntityOwnershipService;
 import org.opendaylight.mdsal.micro.MdsalModule;
 import org.opendaylight.mdsal.singleton.common.api.ClusterSingletonServiceProvider;
 import org.opendaylight.mdsal.singleton.dom.impl.DOMClusterSingletonServiceProviderImpl;
+import org.opendaylight.yangtools.yang.model.parser.api.YangParserFactory;
+import org.opendaylight.yangtools.yang.parser.impl.YangParserFactoryImpl;
+import org.opendaylight.yangtools.yang.xpath.api.YangXPathParserFactory;
+import org.opendaylight.yangtools.yang.xpath.impl.AntlrXPathParserFactory;
 
 
 @SuppressFBWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
@@ -122,6 +126,10 @@ public class InMemoryControllerModule extends AbstractCloseableModule {
         SimpleDOMEntityOwnershipService eos = new SimpleDOMEntityOwnershipService();
         bind(EntityOwnershipService.class).toInstance(new BindingDOMEntityOwnershipServiceAdapter(eos, adapterContext));
         bind(ClusterSingletonServiceProvider.class).toInstance(new DOMClusterSingletonServiceProviderImpl(eos));
+
+
+        bind(YangXPathParserFactory.class).to(AntlrXPathParserFactory.class);
+        bind(YangParserFactory.class).to(YangParserFactoryImpl.class);
 
     }
 
