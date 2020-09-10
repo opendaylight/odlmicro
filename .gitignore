@@ -1,7 +1,8 @@
 etc/
 data/
-target/
-target-ide/
+**/bin
+**/target
+**/target-ide/
 *.class
 .settings
 .project
