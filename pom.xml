@@ -134,8 +134,7 @@
     <module>micro-ovsdb</module>
     <!--module>micro-genius</module>
     <module>micro-netvirt</module>
-    <module>micro-neutron</module>
-    <module>micro-ovsdb</module-->
+    <module>micro-neutron</module-->
   </modules>
 
 </project>
