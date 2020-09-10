@@ -14,9 +14,7 @@ import io.netty.util.concurrent.EventExecutor;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import javax.inject.Singleton;
-import org.opendaylight.aaa.api.CredentialAuth;
 import org.opendaylight.aaa.api.PasswordCredentialAuth;
-import org.opendaylight.aaa.api.PasswordCredentials;
 import org.opendaylight.aaa.encrypt.AAAEncryptionService;
 import org.opendaylight.aaa.micro.AAAModule;
 import org.opendaylight.controller.config.threadpool.ScheduledThreadPool;
@@ -314,8 +312,8 @@ public class NetconfModule extends AutoWiringModule {
     @Provides
     @Singleton
     @NetconfAuthProvider
-    CredentialServiceAuthProvider getNetconfAuthProvider(CredentialAuth<PasswordCredentials> credService) {
-        return new CredentialServiceAuthProvider((PasswordCredentialAuth) credService);
+    CredentialServiceAuthProvider getNetconfAuthProvider(PasswordCredentialAuth passwordCredentialAuth) {
+        return new CredentialServiceAuthProvider(passwordCredentialAuth);
     }
     // Converted here from netconf/aaa-authn-odl-plugin/src/main/resources/OSGI-INF/blueprint/aaa-authn-netconf.xml
     // END
