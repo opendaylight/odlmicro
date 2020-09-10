@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e324387c_b2f75d39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 2264
+      },
+      "writtenOn": "2020-09-10T15:31:12Z",
+      "side": 1,
+      "message": "duplicate lines",
+      "revId": "829daf1be80e133be5aa99bae8069c30e0c2a95c",
+      "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ed1df5a_cf1b239b",
+        "filename": "micro-core/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 2264
+      },
+      "writtenOn": "2020-09-10T15:31:12Z",
+      "side": 1,
+      "message": "don\u0027t think you want these blank lines",
+      "revId": "829daf1be80e133be5aa99bae8069c30e0c2a95c",
+      "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9ffe7a0_e78c55d9",
+        "filename": "micro-core/src/main/java/org/opendaylight/controller/micro/InMemoryControllerModule.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 2264
+      },
+      "writtenOn": "2020-09-10T15:31:12Z",
+      "side": 1,
+      "message": "just one blank line, not two",
+      "revId": "829daf1be80e133be5aa99bae8069c30e0c2a95c",
+      "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15c016e6_85227071",
+        "filename": "micro-netconf/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 2264
+      },
+      "writtenOn": "2020-09-10T15:31:12Z",
+      "side": 1,
+      "message": "blank lines",
+      "revId": "829daf1be80e133be5aa99bae8069c30e0c2a95c",
+      "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
+      "unresolved": true
+    }
+  ]
+}
