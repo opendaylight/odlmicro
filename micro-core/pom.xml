@@ -301,6 +301,12 @@
       <groupId>org.opendaylight.yangtools</groupId>
       <artifactId>util</artifactId>
     </dependency>
+    
+   <dependency>
+      <groupId>org.opendaylight.yangtools</groupId>
+      <artifactId>yang-xpath-impl</artifactId>
+    </dependency>
+    
 
     <!-- Logging related -->
     <dependency>

@@ -8,13 +8,9 @@
 package org.opendaylight.aaa.micro;
 
 import com.google.inject.AbstractModule;
-import com.google.inject.Provides;
-import javax.inject.Singleton;
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 import org.opendaylight.aaa.api.AuthenticationException;
 import org.opendaylight.aaa.api.Claim;
-import org.opendaylight.aaa.api.CredentialAuth;
+import org.opendaylight.aaa.api.PasswordCredentialAuth;
 import org.opendaylight.aaa.api.PasswordCredentials;
 import org.opendaylight.aaa.shiro.tokenauthrealm.auth.ClaimBuilder;
 import org.opendaylight.aaa.shiro.tokenauthrealm.auth.PasswordCredentialBuilder;
@@ -26,34 +22,23 @@ public class AAAModule extends AbstractModule {
     protected void configure() {
         install(new CertModule());
         install(new ShiroModule());
+        bind(PasswordCredentialAuth.class).toInstance(new SimplePasswordCredentialAuth());
     }
 
-    @Provides
-    @Singleton
-    CredentialAuth<PasswordCredentials> getPasswordCredentialAuth() {
-        PasswordCredentials passwordCredentials = new PasswordCredentialBuilder()
-            .setUserName("admin")
-            .setPassword("admin")
-            .setDomain("")
-            .build();
-        return new CredentialAuth<PasswordCredentials>() {
-
-            @Nullable
-            @Override
-            public Claim authenticate(PasswordCredentials cred) throws AuthenticationException {
-                if (cred.equals(passwordCredentials)) {
-                    return new ClaimBuilder()
-                            .setUser("admin")
-                            .build();
-                }
-                return null;
+    public static class SimplePasswordCredentialAuth implements PasswordCredentialAuth {
+        @Override
+        public Claim authenticate(PasswordCredentials cred) throws AuthenticationException {
+            PasswordCredentials passwordCredentials = new PasswordCredentialBuilder()
+                    .setUserName("admin")
+                    .setPassword("admin")
+                    .setDomain("")
+                    .build();
+            if (cred.equals(passwordCredentials)) {
+                return new ClaimBuilder()
+                        .setUser("admin")
+                        .build();
             }
-
-            @Override
-            public @NonNull Class<PasswordCredentials> credentialClass() {
-                // TODO Auto-generated method stub
-                return PasswordCredentials.class;
-            }
-        };
+            return null;
+        }
     }
 }
