@@ -120,6 +120,14 @@
             <descriptor>src/assembly/micro.xml</descriptor>
           </descriptors>
           <tarLongFileMode>gnu</tarLongFileMode>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <archive>
+            <manifest>
+              <mainClass>org.opendaylight.netvirt.micro.NetvirtMain</mainClass>
+            </manifest>
+          </archive>
         </configuration>
         <executions>
           <execution>

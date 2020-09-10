@@ -102,6 +102,14 @@
             <descriptor>src/assembly/micro.xml</descriptor>
           </descriptors>
           <tarLongFileMode>gnu</tarLongFileMode>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <archive>
+            <manifest>
+              <mainClass>org.opendaylight.openflowplugin.micro.OpenFlowPluginMain</mainClass>
+            </manifest>
+          </archive>
         </configuration>
         <executions>
           <execution>
