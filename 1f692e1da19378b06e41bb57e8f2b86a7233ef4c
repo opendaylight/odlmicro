@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01122228_a7c7433c",
+        "filename": "micro-netconf/src/test/java/org/opendaylight/infrautils/micro/testutils/AbstractSimpleDistributionTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 8351
+      },
+      "writtenOn": "2020-09-14T04:38:03Z",
+      "side": 1,
+      "message": "Can you remove the Author?",
+      "revId": "1f692e1da19378b06e41bb57e8f2b86a7233ef4c",
+      "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
+      "unresolved": true
+    }
+  ]
+}
