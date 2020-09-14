@@ -16,6 +16,24 @@
       "revId": "1f692e1da19378b06e41bb57e8f2b86a7233ef4c",
       "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bb6fbc6_f015bf86",
+        "filename": "micro-netconf/src/test/java/org/opendaylight/infrautils/micro/testutils/AbstractSimpleDistributionTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 8523
+      },
+      "writtenOn": "2020-09-14T04:43:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01122228_a7c7433c",
+      "revId": "1f692e1da19378b06e41bb57e8f2b86a7233ef4c",
+      "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
+      "unresolved": false
     }
   ]
 }

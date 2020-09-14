@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8c4ed143_e137246e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 8523
+      },
+      "writtenOn": "2020-09-14T04:43:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e324387c_b2f75d39",
+      "revId": "829daf1be80e133be5aa99bae8069c30e0c2a95c",
+      "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ed1df5a_cf1b239b",
         "filename": "micro-core/pom.xml",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "829daf1be80e133be5aa99bae8069c30e0c2a95c",
       "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c29db5d2_0c10eeb7",
+        "filename": "micro-core/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 8523
+      },
+      "writtenOn": "2020-09-14T04:43:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ed1df5a_cf1b239b",
+      "revId": "829daf1be80e133be5aa99bae8069c30e0c2a95c",
+      "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "43f441a1_8d156269",
+        "filename": "micro-core/src/main/java/org/opendaylight/controller/micro/InMemoryControllerModule.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 8523
+      },
+      "writtenOn": "2020-09-14T04:43:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9ffe7a0_e78c55d9",
+      "revId": "829daf1be80e133be5aa99bae8069c30e0c2a95c",
+      "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15c016e6_85227071",
         "filename": "micro-netconf/pom.xml",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "829daf1be80e133be5aa99bae8069c30e0c2a95c",
       "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60092654_f30ff7b0",
+        "filename": "micro-netconf/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 8523
+      },
+      "writtenOn": "2020-09-14T04:43:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15c016e6_85227071",
+      "revId": "829daf1be80e133be5aa99bae8069c30e0c2a95c",
+      "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
+      "unresolved": false
     }
   ]
 }

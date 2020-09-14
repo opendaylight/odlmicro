@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b20a49bf_be77eafa",
+        "filename": "micro-netconf/src/test/java/org/opendaylight/infrautils/micro/testutils/AbstractSimpleDistributionTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 8523
+      },
+      "writtenOn": "2020-09-14T04:43:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "408f6158_d5c65387",
+      "revId": "b054cb50d3e447896bbd27af49ff36bab22d4be9",
+      "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "806cbe2c_6ae26f9e",
         "filename": "micro-netconf/src/test/java/org/opendaylight/netconf/micro/test/NetconfModuleTest.java",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "b054cb50d3e447896bbd27af49ff36bab22d4be9",
       "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f36b6ab7_e685fc96",
+        "filename": "micro-netconf/src/test/java/org/opendaylight/netconf/micro/test/NetconfModuleTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 8523
+      },
+      "writtenOn": "2020-09-14T04:43:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "806cbe2c_6ae26f9e",
+      "revId": "b054cb50d3e447896bbd27af49ff36bab22d4be9",
+      "serverId": "7fc14799-209e-464c-9743-7a06c2c21a81",
+      "unresolved": false
     }
   ]
 }
