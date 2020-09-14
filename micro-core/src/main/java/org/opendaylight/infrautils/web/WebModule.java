@@ -11,7 +11,6 @@ import com.google.inject.AbstractModule;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.opendaylight.aaa.web.WebContextSecurer;
 import org.opendaylight.aaa.web.WebServer;
-import org.opendaylight.aaa.web.jetty.JettyWebServer;
 import org.opendaylight.aaa.web.servlet.ServletSupport;
 import org.opendaylight.aaa.web.servlet.jersey2.JerseyServletSupport;
 
@@ -24,13 +23,11 @@ import org.opendaylight.aaa.web.servlet.jersey2.JerseyServletSupport;
 public class WebModule extends AbstractModule {
 
     // TODO note (new) org.opendaylight.aaa.web.testutils.WebTestModule .. integrate?
-//    private JettyWebServer webserver;
 
     @Override
     protected void configure() {
         // TODO read port from a -D parameter or configuration file instead of hard-coding
-//        webserver = new JettyWebServer(8181);
-        bind(WebServer.class).to(JettyWebServer.class);
+        bind(WebServer.class).to(JettyWeServer.class);
 
         // JAX-RS
         bind(ServletSupport.class).to(JerseyServletSupport.class);
