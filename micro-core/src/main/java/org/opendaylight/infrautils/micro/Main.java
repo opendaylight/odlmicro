@@ -12,11 +12,12 @@ import com.google.inject.Injector;
 import com.google.inject.Module;
 import com.google.inject.Stage;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import java.io.IOException;
 import org.opendaylight.odlguice.inject.PostFullSystemInjectionListener;
 import org.opendaylight.odlguice.inject.guice.extensions.closeable.CloseableInjector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sun.misc.Signal;
+import sun.misc.SignalHandler;
 
 /**
  * Simple Main.
@@ -66,12 +67,21 @@ public class Main {
         LOG.info("Shutdown complete; Guice injector closed.");
     }
 
-    public void awaitShutdown() {
+    public synchronized void awaitShutdown() {
         try {
-            LOG.info("Awaiting shutdown signal, via CR/LF on STDIN...");
-            System.in.read();
-        } catch (IOException e) {
-            LOG.error("System.in.read() failed?!", e);
+            Signal.handle(new Signal("TERM"), new SignalHandler() {
+                public void handle(Signal sig) {
+                    LOG.info("\nCaught signal. Exiting");
+                    close();
+                }
+            });
+
+            LOG.info("Awaiting shutdown signal.");
+            while (true) {
+                this.wait(2000);
+            }
+        } catch (InterruptedException ignored) {
+            LOG.info("Main Interrupted.");
         } finally {
             this.close();
         }
