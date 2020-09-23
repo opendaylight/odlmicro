@@ -13,13 +13,13 @@
   <parent>
     <groupId>org.opendaylight.odlmicro</groupId>
     <artifactId>micro-aggregator</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
   <groupId>org.opendaylight.odlmicro</groupId>
   <artifactId>micro-genius</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.1-SNAPSHOT</version>
 
   <dependencies>
 
