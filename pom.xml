@@ -26,7 +26,6 @@
          as soon as all of https://git.opendaylight.org/gerrit/#/q/topic:micro-dist are in,
          notably e.g. https://git.opendaylight.org/gerrit/#/c/67179/ et al. (and we bumped odlparent) -->
     <duplicate-finder.skip>true</duplicate-finder.skip>
-    <maven.javadoc.skip>true</maven.javadoc.skip>
   </properties>
 
   <dependencyManagement>
