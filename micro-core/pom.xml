@@ -13,7 +13,7 @@
   <parent>
     <groupId>org.opendaylight.odlmicro</groupId>
     <artifactId>micro-aggregator</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
@@ -260,21 +260,21 @@
     <dependency>
       <groupId>org.opendaylight.serviceutils</groupId>
       <artifactId>srm-api</artifactId>
-      <version>0.6.0-SNAPSHOT</version>
+      <version>0.6.1-SNAPSHOT</version>
     </dependency>
 
     <!--serviceutils-->
     <dependency>
       <groupId>org.opendaylight.serviceutils</groupId>
       <artifactId>srm-impl</artifactId>
-      <version>0.6.0-SNAPSHOT</version>
+      <version>0.6.1-SNAPSHOT</version>
     </dependency>
 
     <!--serviceutils-->
     <dependency>
       <groupId>org.opendaylight.serviceutils</groupId>
       <artifactId>upgrade</artifactId>
-      <version>0.6.0-SNAPSHOT</version>
+      <version>0.6.1-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
 
