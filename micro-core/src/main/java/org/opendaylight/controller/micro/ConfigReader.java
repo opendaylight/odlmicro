@@ -19,6 +19,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
+import org.gaul.modernizer_maven_annotations.SuppressModernizer;
 import org.opendaylight.controller.blueprint.ext.BindingContext;
 import org.opendaylight.controller.blueprint.ext.ConfigXMLReaderException;
 import org.opendaylight.controller.blueprint.ext.DataStoreAppConfigDefaultXMLReader;
@@ -58,6 +59,7 @@ public class ConfigReader {
         return read(resourcePathWithoutExtension, yangType, null);
     }
 
+    @SuppressModernizer
     public <T extends DataObject> T read(String resourcePathWithoutExtension, Class<T> yangType, String listKeyValue) {
         String xmlResourcePath = resourcePathWithoutExtension + ".xml";
         URL xmlResourceURL = Resources.getResource(ConfigReader.class, xmlResourcePath);

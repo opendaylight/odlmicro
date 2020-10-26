@@ -13,7 +13,7 @@
   <parent>
     <groupId>org.opendaylight.odlparent</groupId>
     <artifactId>bundle-parent</artifactId>
-    <version>7.0.5</version>
+    <version>8.0.0</version>
   </parent>
 
   <groupId>org.opendaylight.odlmicro</groupId>
@@ -27,6 +27,7 @@
          notably e.g. https://git.opendaylight.org/gerrit/#/c/67179/ et al. (and we bumped odlparent) -->
     <duplicate-finder.skip>true</duplicate-finder.skip>
     <maven.javadoc.skip>true</maven.javadoc.skip>
+    <odlguice.version>1.0.1-SNAPSHOT</odlguice.version>
   </properties>
 
   <dependencyManagement>
@@ -35,42 +36,42 @@
       <dependency>
         <groupId>org.opendaylight.infrautils</groupId>
         <artifactId>infrautils-artifacts</artifactId>
-        <version>1.8.0</version>
+        <version>1.9.1</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>org.opendaylight.yangtools</groupId>
         <artifactId>yangtools-artifacts</artifactId>
-        <version>5.0.5</version>
+        <version>7.0.0-SNAPSHOT</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>org.opendaylight.aaa</groupId>
         <artifactId>aaa-artifacts</artifactId>
-        <version>0.12.0-SNAPSHOT</version>
+        <version>0.13.0-SNAPSHOT</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>org.opendaylight.controller</groupId>
         <artifactId>controller-artifacts</artifactId>
-        <version>2.0.3</version>
+        <version>3.0.1</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>org.opendaylight.mdsal</groupId>
         <artifactId>mdsal-artifacts</artifactId>
-        <version>6.0.4</version>
+        <version>7.0.1</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>org.opendaylight.netconf</groupId>
         <artifactId>netconf-artifacts</artifactId>
-        <version>1.9.0-SNAPSHOT</version>
+        <version>1.10.0-SNAPSHOT</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -84,7 +85,7 @@
       <dependency>
         <groupId>org.opendaylight.odlguice</groupId>
         <artifactId>odlguice-artifacts</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>${odlguice.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -123,7 +124,14 @@
     <dependency>
       <groupId>org.opendaylight.controller</groupId>
       <artifactId>blueprint</artifactId>
-      <version>2.0.3</version>
+      <version>3.0.1</version>
+      <scope>compile</scope>
+    </dependency>
+   <!-- fix build failures -->
+    <dependency>
+      <groupId>org.immutables</groupId>
+      <artifactId>value</artifactId>
+      <version>2.8.8</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
