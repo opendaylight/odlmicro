@@ -20,10 +20,6 @@ import org.opendaylight.infrautils.micro.ConfigImmutableStyle;
 @ConfigImmutableStyle
 public interface RestConfConfig {
 
-    static RestConfConfigBuilder builder() {
-        return new RestConfConfigBuilder();
-    }
-
     /**
      * IP interface which the WebSocket server will listen on.
      */
