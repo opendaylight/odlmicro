@@ -91,6 +91,14 @@
       <artifactId>inject.guice.extensions.jsr250</artifactId>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+      <groupId>org.opendaylight.odlmicro</groupId>
+      <artifactId>micro-core</artifactId>
+      <version>${project.version}</version>
+      <classifier>tests</classifier>
+      <type>test-jar</type>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
