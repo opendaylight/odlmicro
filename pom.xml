@@ -27,6 +27,7 @@
          notably e.g. https://git.opendaylight.org/gerrit/#/c/67179/ et al. (and we bumped odlparent) -->
     <duplicate-finder.skip>true</duplicate-finder.skip>
     <maven.javadoc.skip>true</maven.javadoc.skip>
+    <odlguice.version>1.0.1-SNAPSHOT</odlguice.version>
   </properties>
 
   <dependencyManagement>
@@ -84,7 +85,7 @@
       <dependency>
         <groupId>org.opendaylight.odlguice</groupId>
         <artifactId>odlguice-artifacts</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>${odlguice.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
