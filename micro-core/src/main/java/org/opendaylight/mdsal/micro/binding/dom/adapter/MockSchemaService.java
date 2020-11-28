@@ -22,6 +22,7 @@ import org.opendaylight.mdsal.binding.dom.codec.spi.BindingDOMCodecServices;
 import org.opendaylight.mdsal.binding.runtime.api.BindingRuntimeContext;
 import org.opendaylight.mdsal.dom.api.DOMSchemaService;
 import org.opendaylight.mdsal.dom.api.DOMSchemaServiceExtension;
+import org.opendaylight.mdsal.dom.broker.DOMRpcRouter;
 import org.opendaylight.yangtools.concepts.ListenerRegistration;
 import org.opendaylight.yangtools.util.ListenerRegistry;
 import org.opendaylight.yangtools.yang.model.api.EffectiveModelContext;
@@ -54,7 +55,11 @@ public final class MockSchemaService implements DOMSchemaService, EffectiveModel
     @Override
     public ListenerRegistration<EffectiveModelContextListener> registerSchemaContextListener(
             final EffectiveModelContextListener listener) {
-        return listeners.register(listener);
+        ListenerRegistration<EffectiveModelContextListener> reg =  listeners.register(listener);
+        if (listener instanceof DOMRpcRouter) {
+            listener.onModelContextUpdated(schemaContext);
+        }
+        return reg;
     }
 
     @Override
