@@ -161,21 +161,7 @@
     <!--mdsal-->
     <dependency>
       <groupId>org.opendaylight.mdsal</groupId>
-      <artifactId>mdsal-binding-test-utils</artifactId>
-    </dependency>
-
-    <!--mdsal-->
-    <dependency>
-      <groupId>org.opendaylight.mdsal</groupId>
       <artifactId>mdsal-binding-dom-codec-api</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.opendaylight.mdsal</groupId>
-      <artifactId>mdsal-binding-dom-adapter</artifactId>
-      <type>test-jar</type>
-      <!-- We are building on top of abstract test classes -->
-      <scope>compile</scope>
     </dependency>
 
     <dependency>
