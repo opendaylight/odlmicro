@@ -55,6 +55,7 @@ import org.opendaylight.netconf.micro.annotations.NetconfAuthProvider;
 import org.opendaylight.netconf.sal.connect.impl.DefaultSchemaResourceManager;
 import org.opendaylight.netconf.sal.connect.netconf.DeviceActionFactoryImpl;
 import org.opendaylight.netconf.sal.connect.netconf.schema.mapping.DefaultBaseNetconfSchemas;
+import org.opendaylight.netconf.sal.connect.util.NetconfTopologyRPCProvider;
 import org.opendaylight.netconf.topology.api.NetconfTopology;
 import org.opendaylight.netconf.topology.impl.NetconfTopologyImpl;
 import org.opendaylight.odlguice.inject.guice.AutoWiringModule;
@@ -203,6 +204,14 @@ public class NetconfModule extends AutoWiringModule {
     ServerChannelInitializer getServerChannelInitializer(
             NetconfServerSessionNegotiatorFactory netconfServerSessionNegotiatorFactory) {
         return new ServerChannelInitializer(netconfServerSessionNegotiatorFactory);
+    }
+
+    @Provides
+    @Singleton
+    NetconfTopologyRPCProvider getNetconfTopologyRPCProvider(final DataBroker dataBroker,
+                                      final AAAEncryptionService encryptionService) {
+        LOG.info("Loading netconf device RPC");
+        return new NetconfTopologyRPCProvider(dataBroker, encryptionService, "topology-netconf");
     }
 
     @Provides
